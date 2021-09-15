@@ -8,7 +8,7 @@ function [] = createFileHeader(fullFilePath)
 % N/A 
 %% Initialise file
 
-fileID = fopen(fullFilePath);
+fileID = fopen(fullFilePath, 'w+');
 
 % Check that a valid fileID was returned
 if fileID == -1
