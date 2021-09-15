@@ -14,7 +14,7 @@ fileID = fopen(fullFilePath);
 if fileID == -1
     % CASE: MATLAB cannot open the file
     % ACTION: Generate an error
-    errorStruct.message = fprintf('Unable to open file: %s', fullFilePath);
+    errorStruct.message = sprintf('Unable to open file: %s\n', char(fullFilePath));
     errorStruct.identifier = 'createFileHeader:unableToOpenFile';
     error(errorStruct);
 elseif ismember(fileID, [0, 1, 2])
