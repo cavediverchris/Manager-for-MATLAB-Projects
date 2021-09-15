@@ -5,11 +5,12 @@ classdef test_createFileHeader < matlab.unittest.TestCase
            % The purpose of this test is to ensure that the overall utility
            % responds appropriately if there are fopen issues.
            %% Setup
-           
+           newFilename = "test.m";
+           fullFilename = fullfile(pwd, newFilename);
            %% Exercise
-           
+           createFileHeader(fullFilename);
            %% Verify
-           %testCase.verifySize([1 2 3; 4 5 6],[2 4]) % Produces a test failure
+           testCase.verifyEqual(exist(fullFilename, 'file'), 2)
            %% Teardown
            
            
