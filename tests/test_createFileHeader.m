@@ -12,7 +12,7 @@ classdef test_createFileHeader < matlab.unittest.TestCase
            %% Verify
            testCase.verifyEqual(exist(fullFilename, 'file'), 2)
            %% Teardown
-           
+           delete(fullFilename);
            
        end
     end % methods (Test)
