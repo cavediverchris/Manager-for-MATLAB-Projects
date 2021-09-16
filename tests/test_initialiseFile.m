@@ -1,4 +1,4 @@
-classdef test_createFileHeader < matlab.unittest.TestCase
+classdef test_initialiseFile < matlab.unittest.TestCase
     methods(Test) 
        function testAbleToInitialiseFile(testCase)
            %% Description
@@ -8,12 +8,12 @@ classdef test_createFileHeader < matlab.unittest.TestCase
            newFilename = "test.m";
            fullFilename = fullfile(pwd, newFilename);
            %% Exercise
-           createFileHeader(fullFilename);
+           [fileID] = initialiseFile(fullFilename);
            %% Verify
            testCase.verifyEqual(exist(fullFilename, 'file'), 2)
            %% Teardown
+           fclose(fileID);
            delete(fullFilename);
-           
        end
     end % methods (Test)
 end
