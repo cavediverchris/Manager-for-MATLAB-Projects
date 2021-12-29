@@ -7,7 +7,7 @@ function [fileID] = initialiseFile(fullFilePath)
 % N/A 
 %% Initialise file
 
-fileID = fopen(fullFilePath, 'w+');
+fileID = fopen(fullFilePath + ".m", 'w+');
 
 % Check that a valid fileID was returned
 if fileID == -1
