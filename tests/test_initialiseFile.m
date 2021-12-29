@@ -5,7 +5,7 @@ classdef test_initialiseFile < matlab.unittest.TestCase
            % The purpose of this test is to ensure that the overall utility
            % responds appropriately if there are fopen issues.
            %% Setup
-           newFilename = "test.m";
+           newFilename = "test";
            fullFilename = fullfile(pwd, newFilename);
            %% Exercise
            [fileID] = initialiseFile(fullFilename);
