@@ -15,11 +15,12 @@ if ~(exist("answer", 'var') == 1)
 end
 %% Create container folder
 fcnName = erase(answer, " ");
-targetDir = fullfile(pwd , fcnName);
+%targetDir = fullfile(pwd , fcnName);
+targetDir = pwd;
 
 %% Instantiate the script
-
-[fileId] = initialiseFile(targetDir);
+newScriptFilename = fullfile(targetDir, fcnName);
+[fileId] = initialiseFile(newScriptFilename);
 
 %% Populate the file header
 
@@ -31,4 +32,4 @@ fclose(fileId);
 
 %% Create requirements module
 
-createReqtsModule;
+%createReqtsModule;
