@@ -25,42 +25,42 @@ end
 fprintf(fileId, '%%%% %s\n', functionName);
 fprintf(fileId, '%% %s\n', 'The purpose of this file is to ...');
 fprintf(fileId, '%% %s\n', 'TODO: Populate the description');
-fprintf(fileId, '%s', '%%\n');
+fprintf(fileId, '%s', '%%');
 
 % Create inputs definition section
-fprintf(fileId, '%s\n', '%%%% INPUTS');
-fprintf(fileId, '%s\n', '%% This function accepts the following inputs:\n');
-fprintf(fileId, '%s\n', '%%   Input 1: <<INPUT 1 NAME>>');
-fprintf(fileId, '%s\n', '%%       Description: TBD.\n');
-fprintf(fileId, '%s\n', '%%       Data Type: TBD.\n');
-fprintf(fileId, '%s\n', '%%       Dimensions: TBD.\n');
-fprintf(fileId, '%s\n', '%%       Units: TBD.\n');
-fprintf(fileId, '%s\n', '%%       Other comments / information: TBD.\n');
-fprintf(fileId, '%s\n', '');
-fprintf(fileId, '%s\n', '%%   Input 2: <<INPUT 1 NAME>>');
-fprintf(fileId, '%s\n', '%%       Description: TBD.\n');
-fprintf(fileId, '%s\n', '%%       Data Type: TBD.\n');
-fprintf(fileId, '%s\n', '%%       Dimensions: TBD.\n');
-fprintf(fileId, '%s\n', '%%       Units: TBD.\n');
-fprintf(fileId, '%s\n', '%%       Other comments / information: TBD.\n');
+fprintf(fileId, '%% %s\n', 'INPUTS');
+fprintf(fileId, '%s\n', '% This function accepts the following inputs:');
+fprintf(fileId, '%s\n', '%   Input 1: <<INPUT 1 NAME>>');
+fprintf(fileId, '%s\n', '%       Description: TBD.');
+fprintf(fileId, '%s\n', '%       Data Type: TBD.');
+fprintf(fileId, '%s\n', '%       Dimensions: TBD.');
+fprintf(fileId, '%s\n', '%       Units: TBD.');
+fprintf(fileId, '%s\n', '%       Other comments / information: TBD.');
+fprintf(fileId, '%s\n', '%');
+fprintf(fileId, '%s\n', '%   Input 2: <<INPUT 1 NAME>>');
+fprintf(fileId, '%s\n', '%       Description: TBD.');
+fprintf(fileId, '%s\n', '%       Data Type: TBD.');
+fprintf(fileId, '%s\n', '%       Dimensions: TBD.');
+fprintf(fileId, '%s\n', '%       Units: TBD.');
+fprintf(fileId, '%s\n', '%       Other comments / information: TBD.');
 
 % Create outputs definition section
-fprintf(fileId, '%s\n', '%%%% OUTPUTS\n');
-fprintf(fileId, '%s\n', '%% This function accepts the following inputs:\n');
-fprintf(fileId, '%s\n', '%%   Output 1: <<OUTPUT 1 NAME>>');
-fprintf(fileId, '%s\n', '%%       Description: TBD.\n');
-fprintf(fileId, '%s\n', '%%       Data Type: TBD.\n');
-fprintf(fileId, '%s\n', '%%       Dimensions: TBD.\n');
-fprintf(fileId, '%s\n', '%%       Units: TBD.\n');
-fprintf(fileId, '%s\n', '\n');
-fprintf(fileId, '%s\n', '%%   Output 2: <<OUTPUT 1 NAME>>');
-fprintf(fileId, '%s\n', '%%       Description: TBD.\n');
-fprintf(fileId, '%s\n', '%%       Data Type: TBD.\n');
-fprintf(fileId, '%s\n', '%%       Dimensions: TBD.\n');
-fprintf(fileId, '%s\n', '%%       Units: TBD.\n');
+fprintf(fileId, '%% %s\n', 'OUTPUTS');
+fprintf(fileId, '%s\n', '% This function accepts the following inputs:');
+fprintf(fileId, '%s\n', '%   Output 1: <<OUTPUT 1 NAME>>');
+fprintf(fileId, '%s\n', '%       Description: TBD.');
+fprintf(fileId, '%s\n', '%       Data Type: TBD.');
+fprintf(fileId, '%s\n', '%       Dimensions: TBD.');
+fprintf(fileId, '%s\n', '%       Units: TBD.');
+fprintf(fileId, '%s\n', '%');
+fprintf(fileId, '%s\n', '%   Output 2: <<OUTPUT 1 NAME>>');
+fprintf(fileId, '%s\n', '%       Description: TBD.');
+fprintf(fileId, '%s\n', '%       Data Type: TBD.');
+fprintf(fileId, '%s\n', '%       Dimensions: TBD.');
+fprintf(fileId, '%s\n', '%       Units: TBD.');
 
 % Create support section
-fprintf(fileId, '%s\n', '%%%% SUPPORT\n');
+fprintf(fileId, '%%%% %s\n', 'SUPPORT');
 fprintf(fileId, '%s\n', '% For further information check out: <a href="matlab:web("https://github.com/cavediverchris/")">Git documentation</a>.'); 
 fprintf(fileId, '%s\n', '% TODO: Populate any relevent external links ... ');
 
