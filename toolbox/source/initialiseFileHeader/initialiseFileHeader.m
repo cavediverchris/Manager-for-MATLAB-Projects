@@ -5,7 +5,7 @@
 function [] = initialiseFileHeader(fileId)
 
 arguments
-    fileId mustBeNumeric
+    fileId (1,1) {mustBeNumeric}
 end
 
 %% Case Conversion
