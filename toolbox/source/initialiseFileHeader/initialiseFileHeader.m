@@ -28,7 +28,7 @@ fprintf(fileId, '%% %s\n', 'TODO: Populate the description');
 fprintf(fileId, '%s', '%%');
 
 % Create inputs definition section
-fprintf(fileId, '%% %s\n', 'INPUTS');
+fprintf(fileId, '%s\n', '%% INPUTS');
 fprintf(fileId, '%s\n', '% This function accepts the following inputs:');
 fprintf(fileId, '%s\n', '%   Input 1: <<INPUT 1 NAME>>');
 fprintf(fileId, '%s\n', '%       Description: TBD.');
@@ -43,9 +43,10 @@ fprintf(fileId, '%s\n', '%       Data Type: TBD.');
 fprintf(fileId, '%s\n', '%       Dimensions: TBD.');
 fprintf(fileId, '%s\n', '%       Units: TBD.');
 fprintf(fileId, '%s\n', '%       Other comments / information: TBD.');
+fprintf(fileId, '%s\n', '%');
 
 % Create outputs definition section
-fprintf(fileId, '%% %s\n', 'OUTPUTS');
+fprintf(fileId, '%s\n', '%% OUTPUTS');
 fprintf(fileId, '%s\n', '% This function accepts the following inputs:');
 fprintf(fileId, '%s\n', '%   Output 1: <<OUTPUT 1 NAME>>');
 fprintf(fileId, '%s\n', '%       Description: TBD.');
