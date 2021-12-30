@@ -1,8 +1,9 @@
 function [formattedSentence] = convertSentenceCase(inputString,sentenceCase)
+sentenceCase = char(sentenceCase);
 
 
 switch sentenceCase
-    case "camel-case"
+    case char("camel-case")
         if contains(inputString, " ")
             % CASE: the string that the user gave has spaces
             % ACTION: Modify the first letter to be upper case
@@ -11,16 +12,17 @@ switch sentenceCase
             componentWords = inputString.split;
             newWords = arrayfun(capitalize, componentWords(2:end));
             formattedSentence = componentWords(1) + join(newWords, "");
-            
+        else
+            % CASE: There are no spaces in the input string, therefore we
+            % are assuming that it is not a sentence
+            % ACTION: Set the formattedSentence output to be the
+            % inputString
+            formattedSentence = inputString;
         end
-        
-    case "pascal-case"
-        
-        
     otherwise
+        error("convertSentenceCase:unrecognisedCase", "The case specified is unrecognised, the provided case was: %s.", sentenceCase)
         
         
-        
-end
-end
+end % switch sentenceCase
+end % function
 
