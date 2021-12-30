@@ -36,7 +36,17 @@
 
 
 function [] = createReqtsModule(reqtsFile)
+%% Check for Simulink Requirements Licence
+feature = "requirements";
+status = license('test',feature);
 
+if status == 0
+   % CASE: A Simulink Requirements licence is not present
+   % ACTION: Return an error
+   error("createReqtsModule:noRequirementsLicence", "A Simulink Requirements licence is required.");
+end
+
+%% Create Requirements File
 myReqSet = slreq.new(reqtsFile);
 
 myReqSet.Description = "This requirements file contains the requirements for ...";
