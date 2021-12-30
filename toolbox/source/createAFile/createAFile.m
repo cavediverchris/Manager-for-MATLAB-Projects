@@ -2,14 +2,10 @@
 % This script is used to automate the process of setting up a brand new
 % script according to a naming convention and folder structure.
 
-
-%% Request User Input
-answer = inputdlg("Enter the title of the file to be created", "New File");
-answer = answer{:};
-answer = string(answer);
+function [] = createAFile(fileTitle)
 %% Create container folder
 
-newFileName = convertSentenceCase(answer, "camel-case");
+newFileName = convertSentenceCase(fileTitle, "camel-case");
 
 targetDir = fullfile(pwd , newFileName);
 mkdir(targetDir);
@@ -25,6 +21,7 @@ initialiseFileHeader(fileId);
 fclose(fileId);
 
 % Add the container folder and new script to the project
+projObj = currentProject;
 addFolderIncludingChildFiles(projObj, targetDir);
 addPath(projObj, targetDir);
 %% Create Unit Test file
@@ -38,6 +35,4 @@ fclose(fileId);
 
 addFile(projObj, which(unitTestFilename));
 
-%% Create requirements module
-
-%createReqtsModule;
+end
