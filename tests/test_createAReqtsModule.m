@@ -1,23 +1,26 @@
-classdef test_createAReqtsModule
-    %TEST_CREATEAREQTSMODULE Summary of this class goes here
-    %   Detailed explanation goes here
-    
-    properties
-        Property1
-    end
-    
-    methods
-        function obj = test_createAReqtsModule(inputArg1,inputArg2)
-            %TEST_CREATEAREQTSMODULE Construct an instance of this class
-            %   Detailed explanation goes here
-            obj.Property1 = inputArg1 + inputArg2;
+classdef test_createAReqtsModule < matlab.unittest.TestCase
+    methods(Test)
+        function confirmAScriptAndTestIsMade(testCase)
+            %% Description
+            % The purpose of this test is to ensure that the
+            % createReqtsModule script creates a requirements module
+            %% Test Setup
+            newFileName = "aSimpleRequirementsModule";
+            projObj = currentProject;
+            %% Test Execution
+            %createReqtsModule(newFileName);
+            %% Test Verification
+            % We want to check that:
+            % - a new requirements file has been created
+            
+            
+            expSolution = 2;
+            testCase.verifyEqual(expSolution,expSolution);
+            
+            %% Test Teardown
+            % Remove the files created from the project
+
         end
-        
-        function outputArg = method1(obj,inputArg)
-            %METHOD1 Summary of this method goes here
-            %   Detailed explanation goes here
-            outputArg = obj.Property1 + inputArg;
-        end
+
     end
 end
-
