@@ -2,4 +2,5 @@ function testResults = runUnitTests()
 
 projObj = currentProject;
 
-testResults = runtests(projObj.RootFolder,'IncludeSubfolders',true);
+testResults = runtests(..., 
+                'BaseFolder', fullfile(projObj.RootFolder, "tests"));
