@@ -22,5 +22,17 @@ The Manager for MATLAB Projects is shipped as a MATLAB Toolbox. Simply double-cl
 
 The most interactive way of using the Manager is to launch the app from your app tray.
 
+To do this, go to MATLAB, and click on "APPS" in the toolstrip at the top of the screen.
+
+The app tray then covers the bulk of the toolstrip, you will want to click on the down-arrow on the far right hand side this will open the app tray to show the full set of apps you have available.
+
+You may need to scroll down before you are able to see "Manager for MATLAB Projects". 
+
+TIP: If you click the star next to the app icon, you will be able to pin the app to the top of your app tray to save you having to scroll through all the apps again. 
+
+TIP #2: You may wish to unpin other apps that are pinned by default if they are filling up your app tray so that you can't easily see the Manager for MATLAB Projects app.
+
 # Compatability
-This MATLAB Project is built using MATLAB R2021A.
+This MATLAB Project is built using MATLAB R2021A and MATLAB Projects are not typically backward compatible.
+
+Once the toolbox has been packaged into a toolbox, it should be generally compatable with most versions of MATLAB, however it is only expected to work reliably in the same version that it has been built with i.e. R2021A.
