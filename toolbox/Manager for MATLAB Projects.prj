@@ -1,0 +1,81 @@
+<deployment-project plugin="plugin.apptool" plugin-version="1.0">
+  <configuration build-checksum="3655757622" file="C:\Users\chris\MATLAB\Projects\Manager-for-MATLAB-Projects\Manager for MATLAB Projects.prj" location="C:\Users\chris\MATLAB\Projects\Manager-for-MATLAB-Projects" name="Manager for MATLAB Projects" target="target.mlapps" target-name="Package App">
+    <param.appname>Manager for MATLAB Projects</param.appname>
+    <param.authnamewatermark>Chris Armstrong</param.authnamewatermark>
+    <param.email>cancerchris88+github@gmail.com</param.email>
+    <param.company>Matrix Engineering Design Ltd</param.company>
+    <param.icon />
+    <param.icons />
+    <param.summary>Use the Manager for MATLAB Projects to automate routine tasks with your MATLAB Projects!</param.summary>
+    <param.description>Often we need to doing some very repetitive tasks within MATLAB Projects, particularly around creating new files or models. The Manager for MATLAB Projects takes care of this for you by simply asking for a friendly name and it does all the rest!</param.description>
+    <param.screenshot />
+    <param.version>0.1.0</param.version>
+    <param.products.name />
+    <param.products.id />
+    <param.products.version />
+    <param.platforms />
+    <param.output>${PROJECT_ROOT}</param.output>
+    <param.guid>f5318d9d-91e5-4b2c-891d-7ee280f6c08f</param.guid>
+    <unset>
+      <param.company />
+      <param.icon />
+      <param.icons />
+      <param.screenshot />
+      <param.products.name />
+      <param.products.id />
+      <param.products.version />
+      <param.platforms />
+      <param.output />
+    </unset>
+    <fileset.main>
+      <file>${PROJECT_ROOT}\toolbox\source\createAFile\createAFile.m</file>
+    </fileset.main>
+    <fileset.depfun>
+      <file>${PROJECT_ROOT}\toolbox\source\convertSentenceCase\convertSentenceCase.m</file>
+      <file>${PROJECT_ROOT}\toolbox\source\initialiseFile\initialiseFile.m</file>
+      <file>${PROJECT_ROOT}\toolbox\source\initialiseFileHeader\initialiseFileHeader.m</file>
+    </fileset.depfun>
+    <fileset.resources>
+      <file>${PROJECT_ROOT}\toolbox\source\MATLABtemplateforappdevelopment.sltx</file>
+      <file>${PROJECT_ROOT}\toolbox\source\MATLABtemplatefordatascience.sltx</file>
+      <file>${PROJECT_ROOT}\toolbox\source\MATLABtemplatefordesigningsystems.sltx</file>
+    </fileset.resources>
+    <fileset.package />
+    <build-deliverables>
+      <file location="C:\Users\chris\MATLAB\Projects" name="Manager-for-MATLAB-Projects" optional="false">C:\Users\chris\MATLAB\Projects\Manager-for-MATLAB-Projects</file>
+    </build-deliverables>
+    <workflow />
+    <matlab>
+      <root>C:\Program Files\MATLAB\R2021a</root>
+      <toolboxes>
+        <toolbox name="fixedpoint" />
+        <toolbox name="neuralnetwork" />
+      </toolboxes>
+      <toolbox>
+        <fixedpoint>
+          <enabled>true</enabled>
+        </fixedpoint>
+      </toolbox>
+      <toolbox>
+        <neuralnetwork>
+          <enabled>true</enabled>
+        </neuralnetwork>
+      </toolbox>
+    </matlab>
+    <platform>
+      <unix>false</unix>
+      <mac>false</mac>
+      <windows>true</windows>
+      <win2k>false</win2k>
+      <winxp>false</winxp>
+      <vista>false</vista>
+      <linux>false</linux>
+      <solaris>false</solaris>
+      <osver>10.0</osver>
+      <os32>false</os32>
+      <os64>true</os64>
+      <arch>win64</arch>
+      <matlab>true</matlab>
+    </platform>
+  </configuration>
+</deployment-project>
