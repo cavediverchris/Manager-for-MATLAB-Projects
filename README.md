@@ -1,10 +1,22 @@
-# Manager-for-MATLAB-Projects
+# Table of Contents
 
-## Purpose
+1. [Purpose](#purpose)
+2. [Instructions](#instructions)
+3. [Compatability](#compatability)
+
+# Purpose <a name="purpose"></a>
 
 The Manager for MATLAB Projects is a suite of functions as well as a MATLAB App interface that is used to automate some routine and borderline mandraulic tasks in order to ensure a consistent application.
 
-# Instructions
+The Manager for MATLAB Projects is primarily designed to interact with MATLAB Projects that have been set up using the templates that ship with the Manager for MATLAB Projects which are based upon the templates here:
+
+1. [MATLAB Template for Designing Systems](https://github.com/cavediverchris/MATLAB-template-for-designing-systems)
+2. [MATLAB Template for Data Science](https://github.com/cavediverchris/MATLAB-template-for-data-science)
+3. [MATLAB Template for App Development](https://github.com/cavediverchris/MATLAB-template-for-app-development)
+
+MATLAB Projects are a great way to manage and organise your work.
+
+# Instructions <a name="instructions"></a>
 
 ## Packaging Instructions
 
@@ -32,7 +44,7 @@ TIP: If you click the star next to the app icon, you will be able to pin the app
 
 TIP #2: You may wish to unpin other apps that are pinned by default if they are filling up your app tray so that you can't easily see the Manager for MATLAB Projects app.
 
-# Compatability
+# Compatability <a name="compatability"></a>
 This MATLAB Project is built using MATLAB R2021A and MATLAB Projects are not typically backward compatible.
 
 Once the toolbox has been packaged into a toolbox, it should be generally compatable with most versions of MATLAB, however it is only expected to work reliably in the same version that it has been built with i.e. R2021A.
