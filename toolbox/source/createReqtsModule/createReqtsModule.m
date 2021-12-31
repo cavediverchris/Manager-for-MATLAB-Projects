@@ -51,17 +51,30 @@ myReqSet = slreq.new(reqtsFile);
 
 myReqSet.Description = "This requirements file contains the requirements for ...";
 
-% Add headings as per DEF-STAN TBD to the reqset
+% Add headings as per MIL-HDBK-520A to the reqset
 
-add(myReqSet, 'Summary', 'Heading 1');
-add(myReqSet, 'Summary', 'Heading 1');
-add(myReqSet, 'Summary', 'Heading 1');
-add(myReqSet, 'Summary', 'Heading 1');
-add(myReqSet, 'Summary', 'Heading 1');
-add(myReqSet, 'Summary', 'Heading 1');
-add(myReqSet, 'Summary', 'Heading 1');
-add(myReqSet, 'Summary', 'Heading 1');
-add(myReqSet, 'Summary', 'Heading 1');
+add(myReqSet, 'Summary', 'Required states and modes');
+add(myReqSet, 'Summary', 'System capability requirements');
+add(myReqSet, 'Summary', 'External interface requirements');
+add(myReqSet, 'Summary', 'Internal interface requirements');
+add(myReqSet, 'Summary', 'Internal data requirements');
+add(myReqSet, 'Summary', 'Adaptation requirements');
+add(myReqSet, 'Summary', 'Environmental, Safety and Operational Health requirements');
+add(myReqSet, 'Summary', 'Security and privacy requirements');
+compReqt = add(myReqSet, 'Summary', 'Computer resource requirements');
+add(compReqt, 'Summary', 'Computer hardware requirements');
+add(compReqt, 'Summary', 'Computer hardware resource utilisation requirements');
+add(compReqt, 'Summary', 'Computer software requirements');
+add(compReqt, 'Summary', 'Computer communication requirements');
+add(myReqSet, 'Summary', 'System quality factors');
+add(myReqSet, 'Summary', 'Design and construction constraints');
+add(myReqSet, 'Summary', 'Personnel related requirements');
+add(myReqSet, 'Summary', 'Training related requirements');
+add(myReqSet, 'Summary', 'Logistics related requirements');
+add(myReqSet, 'Summary', 'Other requirements');
+add(myReqSet, 'Summary', 'Packaging requirements');
+add(myReqSet, 'Summary', 'Statutory, regulatory and certification requirements');
+add(myReqSet, 'Summary', 'Demilitarisation and disposal');
 
 % Close the requirements file
 myReqSet.save;
