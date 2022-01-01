@@ -9,7 +9,7 @@
 
 - A simple one-click utility that will initialise a script along with a test harness and a requirements specification all with a name based upon a standardised naming convention</param.description>
     <param.screenshot />
-    <param.version>0.1</param.version>
+    <param.version>0.2</param.version>
     <param.output>${PROJECT_ROOT}\Manager for MATLAB Projects.mltbx</param.output>
     <param.products.name />
     <param.products.id />
@@ -37,7 +37,7 @@
     <param.release.current.only>true</param.release.current.only>
     <param.compatiblity.windows>true</param.compatiblity.windows>
     <param.compatiblity.macos>false</param.compatiblity.macos>
-    <param.compatiblity.linux>true</param.compatiblity.linux>
+    <param.compatiblity.linux>false</param.compatiblity.linux>
     <param.compatiblity.matlabonline>true</param.compatiblity.matlabonline>
     <param.installation.map />
     <param.additional.sw.names />
@@ -69,7 +69,6 @@
       <param.matlab.project.id />
       <param.matlab.project.name />
       <param.compatiblity.windows />
-      <param.compatiblity.linux />
       <param.compatiblity.matlabonline />
       <param.installation.map />
       <param.additional.sw.names />
@@ -86,22 +85,13 @@
       <file>${PROJECT_ROOT}\source\compilerSetup</file>
       <file>${PROJECT_ROOT}\source\convertSentenceCase</file>
       <file>${PROJECT_ROOT}\source\createAFile</file>
-      <file>${PROJECT_ROOT}\source\createCustomModelAdvisorCheck</file>
       <file>${PROJECT_ROOT}\source\createNewFile</file>
-      <file>${PROJECT_ROOT}\source\CreateNewModel</file>
-      <file>${PROJECT_ROOT}\source\createNewUtilityFunction</file>
       <file>${PROJECT_ROOT}\source\createReqtsModule</file>
-      <file>${PROJECT_ROOT}\source\createTemplateFromProject</file>
       <file>${PROJECT_ROOT}\source\DesktopToolset.xml</file>
       <file>${PROJECT_ROOT}\source\initialiseFile</file>
       <file>${PROJECT_ROOT}\source\initialiseFileHeader</file>
-      <file>${PROJECT_ROOT}\source\installGitConfiguration</file>
-      <file>${PROJECT_ROOT}\source\installSubversionConfiguration</file>
       <file>${PROJECT_ROOT}\source\manager.mlapp</file>
-      <file>${PROJECT_ROOT}\source\ModelReview</file>
       <file>${PROJECT_ROOT}\source\README.md</file>
-      <file>${PROJECT_ROOT}\source\runAllTests</file>
-      <file>${PROJECT_ROOT}\source\runUnitTests</file>
     </fileset.rootfiles>
     <fileset.depfun.included />
     <fileset.depfun.excluded />
