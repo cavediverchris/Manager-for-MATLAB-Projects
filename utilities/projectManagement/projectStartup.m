@@ -77,46 +77,13 @@ clear myCacheFolder myCodeGenFolder;
 % checks whether a folder with the project name / date exists in the export
 % location
 
-% Print message to screen.
-disp('Back Up Process');
-
 % Set this flag to false to disable archiving
-runBackUp = false;
+runBackUp = true;
 
-% Define the location for export. 
-exportLocation = "C:\";
-exportLocation = fullfile(exportLocation, 'projectBackups');
-
-% Check that exportLocation is a valid path
-if exist(exportLocation, 'dir') == 0
-    % CASE: exportLocation does not exist as a path
-    % ACTION: create folder at exportLocation
-    mkdir(exportLocation);
-end
-
-backupFile = projObj.Name + ...
-                "_backup_" + ...
-                date + ...
-                ".mlproj";
-            
-backupFile = fullfile(exportLocation, backupFile);
-
-% Check if the backup file exists for today, if not, create it.
-if runBackUp == false
-    % Print message to screen.
-    disp('... Secondary back-up disabled.')
-elseif (exist(backupFile , 'file') == 0) && (runBackUp == true)
-    % Print message to screen.
-    disp("... No archive file found, exporting project to: " +  backupFile);
-    
-    export(projObj, backupFile, ...
-        'ArchiveReferences', true);
-    
-    % Print message to screen.
-    disp('... Back up completed.')
-elseif exist(backupFile , 'file') == 2
-    % Print message to screen.
-    disp ('... Archive file found for current project - skipping export')
+if runBackUp == true
+    % CASE: User wishes to backup the project
+    % ACTION: Run the backup
+    backup("C:\projectBackups");
 end
 
 %% Clean Up
