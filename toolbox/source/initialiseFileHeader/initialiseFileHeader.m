@@ -25,7 +25,6 @@ end
 fprintf(fileId, '%%%% %s\n', functionName);
 fprintf(fileId, '%% %s\n', 'The purpose of this file is to ...');
 fprintf(fileId, '%% %s\n', 'TODO: Populate the description');
-fprintf(fileId, '%s', '%%');
 
 % Create inputs definition section
 fprintf(fileId, '%s\n', '%% INPUTS');
