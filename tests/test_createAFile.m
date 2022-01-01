@@ -20,13 +20,14 @@ classdef test_createAFile < matlab.unittest.TestCase
             
             expSolution = 2;
             testCase.verifyEqual(fcnExists,expSolution);
-            testCase.verifyEqual(testExists,testExists);
+            testCase.verifyEqual(testExists,expSolution);
             
             %% Test Teardown
             % Remove the files created from the project
             removeFile(projObj, which(newFileName));
+            removePath(projObj, fullfile(projObj.RootFolder, newFileName) );
             removeFile(projObj, fullfile(projObj.RootFolder, newFileName) );
-%            removePath(projObj, fullfile(projObj.RootFolder, newFileName) );
+            
             removeFile(projObj, which("test_" + newFileName));
         end
 

@@ -81,7 +81,7 @@ clear myCacheFolder myCodeGenFolder;
 disp('Back Up Process');
 
 % Set this flag to false to disable archiving
-runBackUp = true;
+runBackUp = false;
 
 % Define the location for export. 
 exportLocation = "C:\";
