@@ -30,7 +30,7 @@ In order to build the Manager for MATLAB Projects into a toolbox, you will need 
 
 The Manager for MATLAB Projects is shipped as a MATLAB Toolbox. Simply double-click on the file from within MATLAB to start the toolbox installation process. Once it has completed you should find an icon in your app tray.
 
-## Usage Instructions
+## Launching Instructions
 
 The most interactive way of using the Manager is to launch the app from your app tray.
 
@@ -43,6 +43,12 @@ You may need to scroll down before you are able to see "Manager for MATLAB Proje
 TIP: If you click the star next to the app icon, you will be able to pin the app to the top of your app tray to save you having to scroll through all the apps again. 
 
 TIP #2: You may wish to unpin other apps that are pinned by default if they are filling up your app tray so that you can't easily see the Manager for MATLAB Projects app.
+
+## Usage Instructions
+
+Once the Manager for MATLAB Projects has launched you will see a simple interface with buttons to the included functionality. It is also possible to use the same functionality programmatically if you do not wish to use the GUI.
+
+- Create a script package. When I refer to a package here I am referring to building up: 1) a MATLAB script as intended, placed within its own dedicated folder 2) a unit test harness placed in the tests folder and 3) a requirements module alongside the MATLAB script.
 
 # Compatability <a name="compatability"></a>
 This MATLAB Project is built using MATLAB R2021A and MATLAB Projects are not typically backward compatible.
