@@ -9,7 +9,10 @@ classdef test_backup < matlab.unittest.TestCase
             %% Test Setup
             projObj = currentProject;
             
-            destination = fullfile(projObj.RootFolder, "backupsFolder");
+            % Get parent directory
+            parts = strsplit(projObj.RootFolder, '\');
+            destination = strjoin(parts(1:end-1), '\');
+            destination = fullfile(destination, "backupsFolder");
             mkdir(destination);
             %% Test Execution
             backup(destination);

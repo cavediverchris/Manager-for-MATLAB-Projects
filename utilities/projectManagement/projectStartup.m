@@ -36,7 +36,7 @@ else
         % ACTION: Create it and also add it to the project.
         mkdir(myCacheFolder)
         addFolderIncludingChildFiles(projObj, myCacheFolder);
-%        addPath(projObj, myCacheFolder); % CAN'T ADD TO PATH DURING PROJECT START UP
+        %        addPath(projObj, myCacheFolder); % CAN'T ADD TO PATH DURING PROJECT START UP
     end
     
     projObj.SimulinkCacheFolder = myCacheFolder;
@@ -63,7 +63,7 @@ else
         % ACTION: Create it and also add it to the project.
         mkdir(myCodeGenFolder)
         addFolderIncludingChildFiles(projObj, myCodeGenFolder);
-%        addPath(projObj, myCodeGenFolder); % CAN'T ADD TO PATH DURING PROJECT START UP
+        %        addPath(projObj, myCodeGenFolder); % CAN'T ADD TO PATH DURING PROJECT START UP
     end
     
     projObj.SimulinkCodeGenFolder = myCodeGenFolder;
@@ -83,7 +83,17 @@ runBackUp = true;
 if runBackUp == true
     % CASE: User wishes to backup the project
     % ACTION: Run the backup
-    backup("C:\projectBackups");
+    
+    parts = strsplit(projObj.RootFolder, '\');
+    destination = strjoin(parts(1:end-1), '\');
+    destination = fullfile(destination, "backupsFolder");
+    if ~(exist(destination, 'dir') == 2)
+        % CASE: The backups folder does not exist
+        % ACTION: create it
+        mkdir(destination);
+    end
+    
+    backup(destination);
 end
 
 %% Clean Up
