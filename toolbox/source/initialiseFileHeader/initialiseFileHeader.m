@@ -61,7 +61,7 @@ fprintf(fileId, '%s\n', '%       Units: TBD.');
 
 % Create support section
 fprintf(fileId, '%%%% %s\n', 'SUPPORT');
-fprintf(fileId, '%s\n', '% For further information check out: <a href="matlab:web("https://github.com/cavediverchris/")">Git documentation</a>.'); 
+fprintf(fileId, '%s\n', '% For further information check out: <a href="matlab:web(''https://github.com/cavediverchris/'')">Git documentation</a>.'); 
 fprintf(fileId, '%s\n', '% TODO: Populate any relevent external links ... ');
 
 end
