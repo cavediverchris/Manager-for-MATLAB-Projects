@@ -84,8 +84,21 @@ if runBackUp == true
     % CASE: User wishes to backup the project
     % ACTION: Run the backup
     
-    parts = strsplit(projObj.RootFolder, '\');
-    destination = strjoin(parts(1:end-1), '\');
+    % Check the operating system
+    if isunix
+        % CASE: Running on linux
+        % ACTION: Set the seperator appropriately
+        sep = '/';
+    elseif ispc
+         % CASE: Running on windows
+        % ACTION: Set the seperator appropriately
+        sep = '\';
+    else
+        disp('Platform not supported')
+    end
+    
+    parts = strsplit(projObj.RootFolder, sep);
+    destination = strjoin(parts(1:end-1), sep);
     destination = fullfile(destination, "backupsFolder");
     if ~(exist(destination, 'dir') == 2)
         % CASE: The backups folder does not exist
