@@ -4,38 +4,18 @@
 % or website) that isn't robustly backed up.
 %% INPUTS
 % This function accepts the following inputs:
-%   Input 1: <<INPUT 1 NAME>>
-%       Description: TBD.
-%       Data Type: TBD.
-%       Dimensions: TBD.
-%       Units: TBD.
-%       Other comments / information: TBD.
-%
-%   Input 2: <<INPUT 1 NAME>>
-%       Description: TBD.
-%       Data Type: TBD.
-%       Dimensions: TBD.
-%       Units: TBD.
-%       Other comments / information: TBD.
-%
-%% OUTPUTS
-% This function accepts the following inputs:
-%   Output 1: <<OUTPUT 1 NAME>>
-%       Description: TBD.
-%       Data Type: TBD.
-%       Dimensions: TBD.
-%       Units: TBD.
-%
-%   Output 2: <<OUTPUT 1 NAME>>
-%       Description: TBD.
-%       Data Type: TBD.
-%       Dimensions: TBD.
-%       Units: TBD.
+%   Input 1: backupDirectory
+%       Description: This is a path to the directory that you want the
+%       backups of your sandbox to be saved to.
+%       Data Type: String.
+%       Dimensions: 1x1
+%       Units: N/A.
 %% SUPPORT
-% For further information check out: <a href="matlab:web("https://github.com/cavediverchris/")">Git documentation</a>.
-% TODO: Populate any relevent external links ... 
+% If you run into any issues using this tool, or have ideas for
+% improvements, please log an "issue" <a href="matlab:web('https://github.com/cavediverchris/Manager-for-MATLAB-Projects/issues')">on the Git repository</a>.
 
-function [] = backup(backupDirectory)
+
+function backup(backupDirectory)
 
 arguments
    backupDirectory (1,1) {mustBeFolder} 
