@@ -3,11 +3,33 @@
 % script according to a naming convention and folder structure.
 
 function [] = createAFile(fileTitle)
+
+%% Determine if a path has been provided
+% If a path has been provided then the user knows where they want the file
+% to be created
+
+[path, name, ext] = fileparts(fileTitle);
+
+if isempty(path)
+    % CASE: A path was not provided
+    % ACTION: Set a default path
+    targetDir = fullfile(pwd);
+    name = fileTitle;
+else
+    % CASE: User specified a path
+    % ACTION: Set the path appropriately
+    targetDir = fullfile(path);
+    name = name;
+end
+
+%% Set the file name according to the naming convention
+
+newFileName = convertSentenceCase(name, "camel-case");
 %% Create container folder
 
-newFileName = convertSentenceCase(fileTitle, "camel-case");
 
-targetDir = fullfile(pwd , newFileName);
+
+targetDir = fullfile(targetDir , newFileName);
 mkdir(targetDir);
 %targetDir = pwd;
 

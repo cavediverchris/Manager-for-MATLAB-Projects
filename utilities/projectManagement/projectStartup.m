@@ -36,7 +36,7 @@ else
         % ACTION: Create it and also add it to the project.
         mkdir(myCacheFolder)
         addFolderIncludingChildFiles(projObj, myCacheFolder);
-%        addPath(projObj, myCacheFolder); % CAN'T ADD TO PATH DURING PROJECT START UP
+        %        addPath(projObj, myCacheFolder); % CAN'T ADD TO PATH DURING PROJECT START UP
     end
     
     projObj.SimulinkCacheFolder = myCacheFolder;
@@ -63,7 +63,7 @@ else
         % ACTION: Create it and also add it to the project.
         mkdir(myCodeGenFolder)
         addFolderIncludingChildFiles(projObj, myCodeGenFolder);
-%        addPath(projObj, myCodeGenFolder); % CAN'T ADD TO PATH DURING PROJECT START UP
+        %        addPath(projObj, myCodeGenFolder); % CAN'T ADD TO PATH DURING PROJECT START UP
     end
     
     projObj.SimulinkCodeGenFolder = myCodeGenFolder;
@@ -77,46 +77,36 @@ clear myCacheFolder myCodeGenFolder;
 % checks whether a folder with the project name / date exists in the export
 % location
 
-% Print message to screen.
-disp('Back Up Process');
-
 % Set this flag to false to disable archiving
-runBackUp = false;
+runBackUp = true;
 
-% Define the location for export. 
-exportLocation = "C:\";
-exportLocation = fullfile(exportLocation, 'projectBackups');
-
-% Check that exportLocation is a valid path
-if exist(exportLocation, 'dir') == 0
-    % CASE: exportLocation does not exist as a path
-    % ACTION: create folder at exportLocation
-    mkdir(exportLocation);
-end
-
-backupFile = projObj.Name + ...
-                "_backup_" + ...
-                date + ...
-                ".mlproj";
-            
-backupFile = fullfile(exportLocation, backupFile);
-
-% Check if the backup file exists for today, if not, create it.
-if runBackUp == false
-    % Print message to screen.
-    disp('... Secondary back-up disabled.')
-elseif (exist(backupFile , 'file') == 0) && (runBackUp == true)
-    % Print message to screen.
-    disp("... No archive file found, exporting project to: " +  backupFile);
+if runBackUp == true
+    % CASE: User wishes to backup the project
+    % ACTION: Run the backup
     
-    export(projObj, backupFile, ...
-        'ArchiveReferences', true);
+    % Check the operating system
+    if isunix
+        % CASE: Running on linux
+        % ACTION: Set the seperator appropriately
+        sep = '/';
+    elseif ispc
+         % CASE: Running on windows
+        % ACTION: Set the seperator appropriately
+        sep = '\';
+    else
+        disp('Platform not supported')
+    end
     
-    % Print message to screen.
-    disp('... Back up completed.')
-elseif exist(backupFile , 'file') == 2
-    % Print message to screen.
-    disp ('... Archive file found for current project - skipping export')
+    parts = strsplit(projObj.RootFolder, sep);
+    destination = strjoin(parts(1:end-1), sep);
+    destination = fullfile(destination, "backupsFolder");
+    if ~(exist(destination, 'dir') == 2)
+        % CASE: The backups folder does not exist
+        % ACTION: create it
+        mkdir(destination);
+    end
+    
+    backup(destination);
 end
 
 %% Clean Up

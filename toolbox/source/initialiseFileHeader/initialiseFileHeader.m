@@ -25,7 +25,6 @@ end
 fprintf(fileId, '%%%% %s\n', functionName);
 fprintf(fileId, '%% %s\n', 'The purpose of this file is to ...');
 fprintf(fileId, '%% %s\n', 'TODO: Populate the description');
-fprintf(fileId, '%s', '%%');
 
 % Create inputs definition section
 fprintf(fileId, '%s\n', '%% INPUTS');
@@ -62,7 +61,7 @@ fprintf(fileId, '%s\n', '%       Units: TBD.');
 
 % Create support section
 fprintf(fileId, '%%%% %s\n', 'SUPPORT');
-fprintf(fileId, '%s\n', '% For further information check out: <a href="matlab:web("https://github.com/cavediverchris/")">Git documentation</a>.'); 
+fprintf(fileId, '%s\n', '% For further information check out: <a href="matlab:web(''https://github.com/cavediverchris/'')">Git documentation</a>.'); 
 fprintf(fileId, '%s\n', '% TODO: Populate any relevent external links ... ');
 
 end
