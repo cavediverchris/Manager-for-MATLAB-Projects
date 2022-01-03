@@ -9,9 +9,23 @@ classdef test_backup < matlab.unittest.TestCase
             %% Test Setup
             projObj = currentProject;
             
+            
+            % Check the operating system
+            if isunix
+                % CASE: Running on linux
+                % ACTION: Set the seperator appropriately
+                sep = '/';
+            elseif ispc
+                % CASE: Running on windows
+                % ACTION: Set the seperator appropriately
+                sep = '\';
+            else
+                disp('Platform not supported')
+            end
+            
             % Get parent directory
-            parts = strsplit(projObj.RootFolder, '\');
-            destination = strjoin(parts(1:end-1), '\');
+            parts = strsplit(projObj.RootFolder, sep);
+            destination = strjoin(parts(1:end-1), sep);
             destination = fullfile(destination, "backupsFolder");
             mkdir(destination);
             %% Test Execution
