@@ -2,6 +2,17 @@
 % This script sets up the environment for the current MATLAB Project.
 % This script needs to be added to the Shortcuts to Run at Start to ensure
 % all the initialisation is conducted at project start.
+%% SUPPORT
+% This script operates on the currently running MATLAB Project. You can
+% learn more about MATLAB Projects from the <a href="matlab:web('https://uk.mathworks.com/help/matlab/projects.html')">MATLAB Projects support page.</a>.
+% 
+% You can also report bugs or suggestions for improvements in the "issues"
+% section of <a href="matlab:web('https://github.com/cavediverchris/Manager-for-MATLAB-Projects/issues')">Github.</a>.
+
+
+%% MAIN
+
+
 
 %% Clear the workspace and command window
 % The workspace is cleared of all current variables and all windows are
