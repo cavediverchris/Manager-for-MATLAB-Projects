@@ -1,7 +1,30 @@
 %% initialiseFile
 % The purpose of this function is to initialise a new M-file which will
 % later be updated with a standardised header structure
+%% INPUTS
+% This function accepts the following inputs:
+%   Input 1: fullFilePath
+%       Description: This input is the full path plus file name (without
+%       extension) of the file to be initialised.
+%       Data Type: String.
+%       Dimensions: 1x1.
+%       Units: N/A.
+%
+%% OUTPUTS
+% This function accepts the following inputs:
+%   Output 1: fileID
+%       Description: This is a unique ID that MATLAB assigns when it has
+%       successfully been able to create a file. This fileID can now be
+%       used to write additional data to the file.
+%       Data Type: Number? Integer?.
+%       Dimensions: 1x1.
+%       Units: N/A.
+%
+%% SUPPORT
+% You can also report bugs or suggestions for improvements in the "issues"
+% section of <a href="matlab:web('https://github.com/cavediverchris/Manager-for-MATLAB-Projects/issues')">Github.</a>.
 
+%% MAIN
 function [fileID] = initialiseFile(fullFilePath)
 %% Input Validation
 % N/A 
