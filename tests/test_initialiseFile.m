@@ -26,5 +26,22 @@ classdef test_initialiseFile < matlab.unittest.TestCase
            fclose(fileID);
            delete(fullFilename + ".m");
        end
+       
+       function testAbleToInitialiseFileWithExt(testCase)
+           %% Description
+           % The purpose of this test is to test that we can create a file
+           % with a custom extension
+           %% Setup
+           myExt = ".CTA";
+           newFilename = "test" + myExt;
+           fullFilename = fullfile(pwd, newFilename);
+           %% Exercise
+           [fileID] = initialiseFile(fullFilename);
+           %% Verify
+           testCase.verifyEqual(exist(fullFilename, 'file'), 2)
+           %% Teardown
+           fclose(fileID);
+           delete(fullFilename + myExt);
+       end
     end % methods (Test)
 end

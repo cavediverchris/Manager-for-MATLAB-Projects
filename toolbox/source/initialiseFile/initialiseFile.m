@@ -28,9 +28,27 @@
 function [fileID] = initialiseFile(fullFilePath)
 %% Input Validation
 % N/A 
+
+%% Check if an extension is provided
+% If an extension has been provided, then it might be because the user
+% wants to use a specific-extension. If no extension is provided then use
+% the standard MATLAB m-file
+
+[path, name, ext] = fileparts(fullFilePath);
+
+if isempty(ext)
+    % CASE: The user did not include a file extension in the name
+    % ACTION: Set to m
+    ext = "m";
+    fullFilePath = fullfile(path, name + ext);
+else
+    % CASE: The user did provide a file extension
+    % ACTION: Use the provided extension
+     fullFilePath = fullfile(path, name + ext);
+end
 %% Initialise file
 
-fileID = fopen(fullFilePath + ".m", 'w+');
+fileID = fopen(fullFilePath, 'w+');
 
 % Check that a valid fileID was returned
 if fileID == -1
