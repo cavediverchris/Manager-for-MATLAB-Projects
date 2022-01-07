@@ -1,23 +1,29 @@
 %% Initialise File Header
 % The purpose of this function is to set up a MATLAB M-file to have the a
 % standard file header.
-
+%% INPUTS
+% This function accepts the following inputs:
+%   Input 1: fileId
+%       Description: This input is the file identifier for the file that we
+%       will be adding a header to.
+%       Data Type: Double.
+%       Dimensions: 1x1.
+%       Units: N/A.
+%
+%% SUPPORT
+% You can also report bugs or suggestions for improvements in the "issues"
+% section of <a href="matlab:web('https://github.com/cavediverchris/Manager-for-MATLAB-Projects/issues')">Github.</a>.
+%% MAIN
 function [] = initialiseFileHeader(fileId)
 
 arguments
     fileId (1,1) {mustBeNumeric}
 end
 
-%% Case Conversion
-functionName = "TBD";
-if contains(functionName, " ")
-    % CASE: the string that the user gave has spaces
-    % ACTION: Modify the first letter to be upper case
-    capitalize = @(s) upper(extractBefore(s, 2)) + extractAfter(s, 1);
-    componentWords = functionName.split;
-    newWords = arrayfun(capitalize, componentWords);
-    functionName = join(newWords, "");
-end
+%% Get the function name
+
+fullFileName = fopen(fileId);
+[~, functionName, ~] = fileparts(fullFileName);
 
 %% Populate file header
 
