@@ -1,38 +1,32 @@
-%% TBD
-% The purpose of this file is to ...
-% TODO: Populate the description
+%% createTemplateFromProject
+% The purpose of this file is to create a MATLAB Project template file
+% (*.sltx) of the specified project. The resulting template file is then
+% placed at the location defined by exportPath.
 %% INPUTS
 % This function accepts the following inputs:
-%   Input 1: <<INPUT 1 NAME>>
-%       Description: TBD.
-%       Data Type: TBD.
-%       Dimensions: TBD.
-%       Units: TBD.
-%       Other comments / information: TBD.
+%   Input 1: projObj
+%       Description: This is the project object for the MATLAB Project that
+%       is to be compiled into a template.
+%       Data Type: matlab.project.Project class. <a href="matlab:web('https://uk.mathworks.com/help/matlab/ref/matlab.project.project.html')">See MathWorks documentation for more information.</a>. 
+%       Dimensions: 1x1.
+%       Units: N/A.
+%       Other comments / information: Get the project object using projObj = currentProject;.
 %
-%   Input 2: <<INPUT 1 NAME>>
-%       Description: TBD.
-%       Data Type: TBD.
-%       Dimensions: TBD.
-%       Units: TBD.
-%       Other comments / information: TBD.
+%   Input 2: exportPath
+%       Description: This input defines the location that you wish to store
+%       the MATLAB Project template.
+%       Data Type: String.
+%       Dimensions: 1x1.
+%       Units: N/A.
 %
-%% OUTPUTS
-% This function accepts the following inputs:
-%   Output 1: <<OUTPUT 1 NAME>>
-%       Description: TBD.
-%       Data Type: TBD.
-%       Dimensions: TBD.
-%       Units: TBD.
-%
-%   Output 2: <<OUTPUT 1 NAME>>
-%       Description: TBD.
-%       Data Type: TBD.
-%       Dimensions: TBD.
-%       Units: TBD.
 %% SUPPORT
-% For further information check out: <a href="matlab:web('https://github.com/cavediverchris/')">Git documentation</a>.
-% TODO: Populate any relevent external links ... 
+% This script operates on a  MATLAB Project object. You can
+% learn more about MATLAB Projects from the <a href="matlab:web('https://uk.mathworks.com/help/matlab/projects.html')">MATLAB Projects support page.</a>.
+% 
+% You can also report bugs or suggestions for improvements in the "issues"
+% section of <a href="matlab:web('https://github.com/cavediverchris/Manager-for-MATLAB-Projects/issues')">Github.</a>.
+
+%% MAIN
 function [] = createTemplateFromProject(projObj, exportPath)
 
 %% Format Export File Name
