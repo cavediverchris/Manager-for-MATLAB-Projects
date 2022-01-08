@@ -16,7 +16,7 @@ Also packaged are three MATLAB Project Templates for different roles:
 - MATLAB Template for Designing Systems
 - MATLAB Template for Data Science</param.description>
     <param.screenshot />
-    <param.version>0.3.1</param.version>
+    <param.version>0.3.2</param.version>
     <param.output>${PROJECT_ROOT}\Manager for MATLAB Projects.mltbx</param.output>
     <param.products.name />
     <param.products.id />
