@@ -36,15 +36,15 @@ function [fileID] = initialiseFile(fullFilePath)
 
 [path, name, ext] = fileparts(fullFilePath);
 
-if isempty(ext)
+if strcmp(ext, "")
     % CASE: The user did not include a file extension in the name
     % ACTION: Set to m
     ext = "m";
-    fullFilePath = fullfile(path, name + ext);
+    fullFilePath = fullfile(path, name + "." + ext);
 else
     % CASE: The user did provide a file extension
     % ACTION: Use the provided extension
-     fullFilePath = fullfile(path, name + ext);
+     fullFilePath = fullfile(path, name + "." + ext);
 end
 %% Initialise file
 
