@@ -41,7 +41,7 @@ classdef test_initialiseFile < matlab.unittest.TestCase
            testCase.verifyEqual(exist(fullFilename, 'file'), 2)
            %% Teardown
            fclose(fileID);
-           delete(fullFilename + myExt);
+           delete(fullFilename);
        end
     end % methods (Test)
 end

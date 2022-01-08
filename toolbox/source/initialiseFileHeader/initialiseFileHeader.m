@@ -69,6 +69,7 @@ fprintf(fileId, '%s\n', '%       Units: TBD.');
 fprintf(fileId, '%%%% %s\n', 'SUPPORT');
 fprintf(fileId, '%s\n', '% For further information check out: <a href="matlab:web(''https://github.com/cavediverchris/'')">Git documentation</a>.'); 
 fprintf(fileId, '%s\n', '% TODO: Populate any relevent external links ... ');
-
+fprintf(fileId, '%s\n', '% You can also report bugs or suggestions for improvements in the "issues"'); 
+fprintf(fileId, '%s\n', '% section of <a href="matlab:web(''https://github.com/cavediverchris/Manager-for-MATLAB-Projects/issues'')">Github.</a>.');
 end
 
