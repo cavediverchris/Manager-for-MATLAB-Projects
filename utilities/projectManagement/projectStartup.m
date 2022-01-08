@@ -33,6 +33,7 @@ if strcmp(myCacheFolder, projObj.SimulinkCacheFolder)
     % CASE: The cache folder is set in the project
     % ACTION: Do nothing?
     % TODO: Check that this is always the case
+    
 else
     % CASE: The project does not have the Simulink Cache Folder set
     % ACTION: Create the folder and set it
@@ -106,7 +107,7 @@ if runBackUp == true
     parts = strsplit(projObj.RootFolder, sep);
     destination = strjoin(parts(1:end-1), sep);
     destination = fullfile(destination, "backupsFolder");
-    if ~(exist(destination, 'dir') == 2)
+    if ~(isfolder(destination))
         % CASE: The backups folder does not exist
         % ACTION: create it
         mkdir(destination);
