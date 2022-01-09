@@ -25,10 +25,10 @@ classdef test_createAFilePackage < matlab.unittest.TestCase
             % - a new M-file has been created
             % - a unit test case has been created
             
+            
+            fcnExists = exist(which(fileName), 'file');
             testFileName = "test_" + fileName;
-            newTestFileName = fullfile(pwd, testFileName);
-            fcnExists = exist(which(newFileName), 'file');
-            testExists = exist(which(newTestFileName), 'file');
+            testExists = exist(which(testFileName), 'file');
             
             
             expSolution = 2;
@@ -41,8 +41,9 @@ classdef test_createAFilePackage < matlab.unittest.TestCase
             removeFile(projObj, which(fileName));
             removeFile(projObj, which(testFileName));
             
-            [containerFolder, ~, ~] = fileparts(which(newFileName));
+            [containerFolder, ~, ~] = fileparts(which(fileName));
             removePath(projObj, containerFolder);
+            removeFile(projObj, containerFolder);
         end
 
     end
