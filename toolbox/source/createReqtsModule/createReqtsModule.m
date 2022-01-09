@@ -43,7 +43,8 @@ status = license('test',feature);
 if status == 0
    % CASE: A Simulink Requirements licence is not present
    % ACTION: Return an error
-   error("createReqtsModule:noRequirementsLicence", "A Simulink Requirements licence is required.");
+   warning("createReqtsModule:noRequirementsLicence", "A Simulink Requirements licence is required. No requirements module will be created.");
+   return;
 end
 
 %% Create Requirements File
