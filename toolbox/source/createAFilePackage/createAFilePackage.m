@@ -36,7 +36,7 @@ function [] = createAFilePackage(fileTitle)
 
 [path, name, ext] = fileparts(fileTitle);
 
-if isempty(path)
+if strcmp(path, "")
     % CASE: A path was not provided
     % ACTION: Set a default path
     targetDir = fullfile(pwd);
@@ -47,6 +47,17 @@ else
     targetDir = fullfile(path);
     name = name;
 end
+
+if strcmp(ext, "")
+    % CASE: An was not provided
+    % ACTION: Set the default extension of .m
+    ext = ".m";
+else
+    % CASE: User specified an extension
+    % ACTION: Use their extension
+    ext = ext;
+end
+
 
 %% Set the file name according to the naming convention
 
@@ -64,7 +75,7 @@ addPath(projObj, targetDir);
 
 %% Create a script
 % Initialise a new file
-newScriptFilename = fullfile(targetDir, newFileName);
+newScriptFilename = fullfile(targetDir, newFileName + ext);
 createAFile(newScriptFilename);
 addFile(projObj, newScriptFilename);
 
@@ -79,7 +90,7 @@ createReqtsModule(reqtsFile);
 % A unit test case file is established and added into the tests directory.
 testsDir = fullfile(projObj.RootFolder, "tests");
 
-unitTestFilename = fullfile(testsDir, "test_" + newFileName);
+unitTestFilename = fullfile(testsDir, "test_" + newFileName + ".m");
 createAFile(unitTestFilename);
 
 addFile(projObj, which(unitTestFilename));
