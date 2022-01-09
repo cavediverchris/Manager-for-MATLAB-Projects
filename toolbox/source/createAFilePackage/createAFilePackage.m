@@ -58,22 +58,23 @@ newFileName = convertSentenceCase(name, "camel-case");
 targetDir = fullfile(targetDir , newFileName);
 mkdir(targetDir);
 
+projObj = currentProject;
+addFile(projObj, targetDir);
+addPath(projObj, targetDir);
+
 %% Create a script
 % Initialise a new file
 newScriptFilename = fullfile(targetDir, newFileName);
 createAFile(newScriptFilename);
+addFile(projObj, newScriptFilename);
 
 %% Create requirements 
 % In this section we want to create a requirements file alongside the newly
 % created MATLAB script
 reqtsFile = fullfile(targetDir, "reqts_" + newFileName);
 createReqtsModule(reqtsFile);
+%addFile(projObj, reqtsFile);
 
-%% Add the container folder and contents to the project
-% Add the container folder and new script to the project
-projObj = currentProject;
-addFolderIncludingChildFiles(projObj, targetDir);
-addPath(projObj, targetDir);
 %% Create Unit Test file
 % A unit test case file is established and added into the tests directory.
 testsDir = fullfile(projObj.RootFolder, "tests");
