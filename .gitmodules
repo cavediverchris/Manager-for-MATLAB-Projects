@@ -1,12 +1,9 @@
-[submodule "references/MATLAB-template-for-data-science/"]
-	path = references/MATLAB-template-for-data-science/
-	url = git@github.com:cavediverchris/MATLAB-template-for-data-science.git
-[submodule "references/MATLAB-template-for-app-development/"]
-	path = references/MATLAB-template-for-app-development/
-	url = git@github.com:cavediverchris/MATLAB-template-for-app-development.git
 [submodule "references/MATLAB-template-for-designing-systems"]
 	path = references/MATLAB-template-for-designing-systems
 	url = git@github.com:cavediverchris/MATLAB-template-for-designing-systems.git
-[submodule "references/MATLAB-template-for-designing-systems/"]
-	path = references/MATLAB-template-for-designing-systems/
-	url = git@github.com:cavediverchris/MATLAB-template-for-designing-systems.git
+[submodule "references/MATLAB-template-for-data-science"]
+	path = references/MATLAB-template-for-data-science
+	url = git@github.com:cavediverchris/MATLAB-template-for-data-science.git
+[submodule "references/MATLAB-template-for-app-development"]
+	path = references/MATLAB-template-for-app-development
+	url = git@github.com:cavediverchris/MATLAB-template-for-app-development.git

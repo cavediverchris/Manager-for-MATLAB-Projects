@@ -1,3 +1,7 @@
+# CI / CD Status
+
+[![Run MATLAB Tests on GitHub-Hosted Runner](https://github.com/cavediverchris/Manager-for-MATLAB-Projects/actions/workflows/runMatlabTests.yml/badge.svg)](https://github.com/cavediverchris/Manager-for-MATLAB-Projects/actions/workflows/runMatlabTests.yml)
+
 # Table of Contents
 
 1. [Purpose](#purpose)
