@@ -93,6 +93,32 @@ testsDir = fullfile(projObj.RootFolder, "tests");
 unitTestFilename = fullfile(testsDir, "test_" + newFileName + ".m");
 createAFile(unitTestFilename);
 
+% Extend the test case with some boiler plate material to get the user
+% started with unit test cases
+
+fileId = fopen(unitTestFilename, 'a');
+
+% write a title;
+fprintf(fileId, '%% Test harness for %s', newFileName);
+fprintf(fileId, '%s', newline);
+
+% write a template test
+fprintf(fileId, '%s', '%% Template Test 1: Insert Test Name');
+fprintf(fileId, '%s', newline);
+fprintf(fileId, '%s', newline);
+
+fprintf(fileId, '%s', 'inputData = 1;');
+fprintf(fileId, '%s', newline);
+
+text2write = sprintf('functionOuput = functionName(inputData);');
+fprintf(fileId, '%s', text2write);
+fprintf(fileId, '%s', newline);
+
+text2write = sprintf('assert(functionOutput == criteria, ''Error message if false'');');
+fprintf(fileId, '%s', text2write);
+fprintf(fileId, '%s', newline);
+fclose(fileId);
+
 addFile(projObj, which(unitTestFilename));
 
 end
