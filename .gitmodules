@@ -4,3 +4,6 @@
 [submodule "references/MATLAB-template-for-data-science"]
 	path = references/MATLAB-template-for-data-science
 	url = git@github.com:cavediverchris/MATLAB-template-for-data-science.git
+[submodule "references/MATLAB-template-for-app-development"]
+	path = references/MATLAB-template-for-app-development
+	url = git@github.com:cavediverchris/MATLAB-template-for-app-development.git
