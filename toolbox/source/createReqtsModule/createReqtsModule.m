@@ -37,8 +37,7 @@
 
 function [] = createReqtsModule(reqtsFile)
 %% Check for Simulink Requirements Licence
-feature = "requirements";
-status = license('test',feature);
+status = license('test','slvnv');
 
 if status == 0
    % CASE: A Simulink Requirements licence is not present
