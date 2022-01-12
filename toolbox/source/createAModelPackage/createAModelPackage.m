@@ -37,9 +37,62 @@
 % section of <a href="matlab:web('https://github.com/cavediverchris/Manager-for-MATLAB-Projects/issues')">Github.</a>.
 
 %% Main
+function [] = createAModelPackage(modelTitle)
+%% Determine if a path has been provided
+% If a path has been provided then the user knows where they want the file
+% to be created
 
+[path, name, ext] = fileparts(modelTitle);
 
-createAModel
+if strcmp(path, "")
+    % CASE: A path was not provided
+    % ACTION: Set a default path
+    targetDir = fullfile(pwd);
+    name = modelTitle;
+else
+    % CASE: User specified a path
+    % ACTION: Set the path appropriately
+    targetDir = fullfile(path);
+    name = name;
+end
 
+if strcmp(ext, "")
+    % CASE: An was not provided
+    % ACTION: Set the default extension of .m
+    ext = ".slx";
+else
+    % CASE: User specified an extension
+    % ACTION: Use their extension
+    ext = ext;
+end
 
-createAModelTestHarness
+%% Set the file name according to the naming convention
+
+newModelName = convertSentenceCase(name, "camel-case");
+
+%% Create container folder
+% The container folder is used to contain the function file and the
+% requirements file
+
+targetDir = fullfile(targetDir , newModelName);
+mkdir(targetDir);
+
+projObj = currentProject;
+addFile(projObj, targetDir);
+addPath(projObj, targetDir);
+
+%% Create the model
+newModelFilename = fullfile(targetDir, newModelName + ext);
+createAModel(newModelFilename);
+addFile(projObj, newModelFilename);
+
+%% Create requirements 
+% In this section we want to create a requirements file alongside the newly
+% created MATLAB script
+reqtsFile = fullfile(targetDir, "reqts_" + newModelName);
+createReqtsModule(reqtsFile);
+%addFile(projObj, reqtsFile);
+
+%% Create Test Harness
+[testHarnessFilename] = createAModelTestHarness(newModelFilename);
+addFile(projObj, which(testHarnessFilename));
