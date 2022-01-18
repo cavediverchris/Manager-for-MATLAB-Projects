@@ -35,9 +35,19 @@ classdef test_createAFilePackage < matlab.unittest.TestCase
             testCase.verifyEqual(fcnExists,expSolution);
             testCase.verifyEqual(testExists,expSolution);
             
+            % Check that the files have the correct label
+            projObj = currentProject;
+            fcnFileObj = findFile(projObj, which(fileName));
+            labels = fcnFileObj.findLabel("Classification", "Design");
+            testCase.verifyNotEmpty(labels);
+            
+            testFileObj = findFile(projObj, which(testFileName));
+            labels = testFileObj.findLabel("Classification", "Test");
+            testCase.verifyNotEmpty(labels);
+            
             %% Test Teardown
             % Remove the files created from the project
-            projObj = currentProject;
+            
             removeFile(projObj, which(fileName));
             removeFile(projObj, which(testFileName));
             
