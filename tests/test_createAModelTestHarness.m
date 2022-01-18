@@ -11,19 +11,18 @@
 %% MAIN
 classdef test_createAModelTestHarness < matlab.unittest.TestCase
     methods(Test)
-        function confirmPackageIsMade(testCase)
+        function confirmHarnessIsMade(testCase)
             %% Description
             % The purpose of this test is to ensure that the createAFile
             % script will correctly set up a new MATLAB script
             %% Test Setup
             bdclose all;
-            modelUnderTestName = "myBasicModel";
+            modelUnderTestName = "myBasicModel.slx";
             newFileName = fullfile(pwd, modelUnderTestName);
             createAModel(newFileName);
             %% Test Execution
             [testHarnessFilename] = createAModelTestHarness (newFileName);
             projObj = currentProject;
-            addFile(projObj, which(testHarnessFilename));
             %% Test Verification
             % We want to check that:
             % - if SL Test is not available, an external test harness would
@@ -48,16 +47,8 @@ classdef test_createAModelTestHarness < matlab.unittest.TestCase
          
             expSolution = 4;
             testCase.verifyEqual(testExists,expSolution);
-            
-            % Check that the files have the correct label   
-            
-            testFileObj = findFile(projObj, which(testHarnessFilename));
-            labels = testFileObj.findLabel("Classification", "Test");
-            testCase.verifyNotEmpty(labels);
-            
             %% Test Teardown
             % Remove the files created from the project
-            removeFile(projObj, which(testHarnessFilename));
             delete(testHarnessFilename);
             delete(newFileName);
         end
