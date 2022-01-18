@@ -26,13 +26,13 @@ classdef test_createAModelPackage < matlab.unittest.TestCase
             % - a unit test case has been created
             containingFolder = fullfile(pwd, fileName);
             modelName = fullfile(containingFolder, fileName + ".slx");
-            
             modelExists = exist(which(modelName), 'file');
-            testFileName = fullfile(containingFolder, "test_" + fileName + ".slx");
+            
+            testFileName = fullfile(containingFolder, fileName + "_harness.slx");
             testExists = exist(which(testFileName), 'file');
             
             
-            expSolution = 2;
+            expSolution = 4;
             testCase.verifyEqual(modelExists,expSolution);
             testCase.verifyEqual(testExists,expSolution);
             
