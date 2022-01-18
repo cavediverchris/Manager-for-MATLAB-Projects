@@ -68,5 +68,6 @@ set_param([gcs, '/ModelDocBlock'], 'position', [350 50 400 100]);
 %% Close Down
 % save current model
 save_system(gcs, fullfile(path, modelName));
+close_system(gcs);
 
 end

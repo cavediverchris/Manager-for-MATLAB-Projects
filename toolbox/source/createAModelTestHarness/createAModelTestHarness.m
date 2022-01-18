@@ -101,7 +101,8 @@ else
     add_line(gcs, [modelName, '/1'], 'Display/1');
     
     testHarnessFilename = fullfile(modelPath, harnessName);
-    save_system(gcs, testHarnessFilename)
+    save_system(gcs, testHarnessFilename);
+    close_system(gcs);
     
     % Set the model to use a configuration reference from the data
     % dictionary
