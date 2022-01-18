@@ -51,16 +51,16 @@ harnessName = modelName + "_harness";
 % Recast modelName to be a character array for simulink operations later
 modelName = char(modelName);
 
-% %% Prepare
-% if ~bdIsLoaded(modelUnderTest)
-%     % CASE: model_name is not loaded
-%     % ACTION: load it
-%     load_system(modelUnderTest);
-% end
 %% Build Harness
 if isSlTestInstalled
     % CASE: Simulink Test is available
     % ACTION: Create a test harness using SL Test
+    
+    if ~bdIsLoaded(modelUnderTest)
+        % CASE: model_name is not loaded
+        % ACTION: load it
+        load_system(modelUnderTest);
+    end
     
     sltest.harness.create(modelName, ...
         'Name', harnessName, ...
@@ -102,6 +102,11 @@ else
     
     testHarnessFilename = fullfile(modelPath, harnessName);
     save_system(gcs, testHarnessFilename)
+    
+    % Set the model to use a configuration reference from the data
+    % dictionary
+    % TODO: load the data dictionary
+    % TODO: set the configuration reference
 end
 
 end % function
