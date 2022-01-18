@@ -1,43 +1,66 @@
-%% test_createAModelTestHarness
-% The purpose of this file is to ...
-% TODO: Populate the description
-%% INPUTS
-% This function accepts the following inputs:
-%   Input 1: <<INPUT 1 NAME>>
-%       Description: TBD.
-%       Data Type: TBD.
-%       Dimensions: TBD.
-%       Units: TBD.
-%       Other comments / information: TBD.
-%
-%   Input 2: <<INPUT 1 NAME>>
-%       Description: TBD.
-%       Data Type: TBD.
-%       Dimensions: TBD.
-%       Units: TBD.
-%       Other comments / information: TBD.
-%
-%% OUTPUTS
-% This function accepts the following inputs:
-%   Output 1: <<OUTPUT 1 NAME>>
-%       Description: TBD.
-%       Data Type: TBD.
-%       Dimensions: TBD.
-%       Units: TBD.
-%
-%   Output 2: <<OUTPUT 1 NAME>>
-%       Description: TBD.
-%       Data Type: TBD.
-%       Dimensions: TBD.
-%       Units: TBD.
+%% Unit Test Case
+% The purpose of this file is to use the MATLAB Unit Testing framework in
+% order to automate the testing of the function under test.
 %% SUPPORT
-% For further information check out: <a href="matlab:web('https://github.com/cavediverchris/')">Git documentation</a>.
-% TODO: Populate any relevent external links ... 
+% This test script has been built using the MATLAB Unit Testing framework,
+% you can get further information on this from the <a href="matlab:web('https://uk.mathworks.com/help/matlab/matlab-unit-test-framework.html')">support page.</a>.
+% 
 % You can also report bugs or suggestions for improvements in the "issues"
 % section of <a href="matlab:web('https://github.com/cavediverchris/Manager-for-MATLAB-Projects/issues')">Github.</a>.
-% Test harness for createAModelTestHarness
-%% Template Test 1: Insert Test Name
 
-inputData = 1;
-functionOuput = functionName(inputData);
-assert(functionOutput == criteria, 'Error message if false');
+%% MAIN
+classdef test_createAModelTestHarness < matlab.unittest.TestCase
+    methods(Test)
+        function confirmPackageIsMade(testCase)
+            %% Description
+            % The purpose of this test is to ensure that the createAFile
+            % script will correctly set up a new MATLAB script
+            %% Test Setup
+            bdclose all;
+            modelUnderTestName = "myBasicModel";
+            newFileName = fullfile(pwd, modelUnderTestName);
+            createAModel(newFileName);
+            %% Test Execution
+            [testHarnessFilename] = createAModelTestHarness (newFileName);
+            projObj = currentProject;
+            addFile(projObj, which(testHarnessFilename));
+            %% Test Verification
+            % We want to check that:
+            % - if SL Test is not available, an external test harness would
+            % have been created
+            % - if SL Test is available, an internal test harness would
+            % have been created within the model under test
+            
+            
+            isSlTestInstalled = license('test', 'Simulink_test');
+            
+            if isSlTestInstalled == false
+                % CASE: SL Test isn't installed
+                % ACTION: Check for an external test harness
+                testExists = exist(which(testHarnessFilename), 'file');
+            elseif isSlTestInstalled == true
+                % CASE: SL Test is installed
+                % ACTION: Check for internal test harness
+                % TODO
+                
+                
+            end
+         
+            expSolution = 4;
+            testCase.verifyEqual(testExists,expSolution);
+            
+            % Check that the files have the correct label   
+            
+            testFileObj = findFile(projObj, which(testHarnessFilename));
+            labels = testFileObj.findLabel("Classification", "Test");
+            testCase.verifyNotEmpty(labels);
+            
+            %% Test Teardown
+            % Remove the files created from the project
+            removeFile(projObj, which(testHarnessFilename));
+            delete(testHarnessFilename);
+            delete(newFileName);
+        end
+
+    end
+end
