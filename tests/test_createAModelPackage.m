@@ -24,15 +24,16 @@ classdef test_createAModelPackage < matlab.unittest.TestCase
             % We want to check that:
             % - a new model has been created
             % - a unit test case has been created
+            containingFolder = fullfile(pwd, fileName);
+            modelName = fullfile(containingFolder, fileName + ".slx");
             
-            
-            fcnExists = exist(which(fileName), 'file');
-            testFileName = "test_" + fileName;
+            modelExists = exist(which(modelName), 'file');
+            testFileName = fullfile(containingFolder, "test_" + fileName + ".slx");
             testExists = exist(which(testFileName), 'file');
             
             
             expSolution = 2;
-            testCase.verifyEqual(fcnExists,expSolution);
+            testCase.verifyEqual(modelExists,expSolution);
             testCase.verifyEqual(testExists,expSolution);
             
             % Check that the files have the correct label
