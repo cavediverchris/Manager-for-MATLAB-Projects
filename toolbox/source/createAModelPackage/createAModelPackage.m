@@ -103,5 +103,5 @@ createReqtsModule(reqtsFile);
 [testHarnessFilename] = createAModelTestHarness(newModelFilename);
 addFile(projObj, which(testHarnessFilename));
 
-myFile = findFile(projObj, testHarnessFilename);
+myFile = findFile(projObj, which(testHarnessFilename));
 myFile.addLabel("Classification", "Test");
