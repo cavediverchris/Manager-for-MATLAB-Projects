@@ -18,6 +18,7 @@ classdef test_createAModel < matlab.unittest.TestCase
             %% Test Setup
             newFileName = "aBasicTest";
             newFileName = fullfile(pwd, newFileName);
+            bdclose all
             %% Test Execution
             createAModel(newFileName);
             %% Test Verification
