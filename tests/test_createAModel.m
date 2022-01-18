@@ -1,43 +1,38 @@
-%% test_createAModel
-% The purpose of this file is to ...
-% TODO: Populate the description
-%% INPUTS
-% This function accepts the following inputs:
-%   Input 1: <<INPUT 1 NAME>>
-%       Description: TBD.
-%       Data Type: TBD.
-%       Dimensions: TBD.
-%       Units: TBD.
-%       Other comments / information: TBD.
-%
-%   Input 2: <<INPUT 1 NAME>>
-%       Description: TBD.
-%       Data Type: TBD.
-%       Dimensions: TBD.
-%       Units: TBD.
-%       Other comments / information: TBD.
-%
-%% OUTPUTS
-% This function accepts the following inputs:
-%   Output 1: <<OUTPUT 1 NAME>>
-%       Description: TBD.
-%       Data Type: TBD.
-%       Dimensions: TBD.
-%       Units: TBD.
-%
-%   Output 2: <<OUTPUT 1 NAME>>
-%       Description: TBD.
-%       Data Type: TBD.
-%       Dimensions: TBD.
-%       Units: TBD.
+%% Unit Test Case
+% The purpose of this file is to use the MATLAB Unit Testing framework in
+% order to automate the testing of the function under test.
 %% SUPPORT
-% For further information check out: <a href="matlab:web('https://github.com/cavediverchris/')">Git documentation</a>.
-% TODO: Populate any relevent external links ... 
+% This test script has been built using the MATLAB Unit Testing framework,
+% you can get further information on this from the <a href="matlab:web('https://uk.mathworks.com/help/matlab/matlab-unit-test-framework.html')">support page.</a>.
+% 
 % You can also report bugs or suggestions for improvements in the "issues"
 % section of <a href="matlab:web('https://github.com/cavediverchris/Manager-for-MATLAB-Projects/issues')">Github.</a>.
-% Test harness for createAModel
-%% Template Test 1: Insert Test Name
 
-inputData = 1;
-functionOuput = functionName(inputData);
-assert(functionOutput == criteria, 'Error message if false');
+%% MAIN
+classdef test_createAModel < matlab.unittest.TestCase
+    methods(Test)
+        function confirmScriptIsMade(testCase)
+            %% Description
+            % The purpose of this test is to ensure that the createAFile
+            % script will correctly set up a new MATLAB script
+            %% Test Setup
+            newFileName = "aBasicTest";
+            newFileName = fullfile(pwd, newFileName);
+            %% Test Execution
+            createAModel(newFileName);
+            %% Test Verification
+            % We want to check that:
+            % - a new M-file has been created
+            modelExists = exist(which(newFileName), 'file');
+            
+            
+            expSolution = 4;
+            testCase.verifyEqual(modelExists,expSolution);
+            
+            %% Test Teardown
+            % Remove the files created from the project
+            delete(which(newFileName));
+        end
+
+    end
+end
