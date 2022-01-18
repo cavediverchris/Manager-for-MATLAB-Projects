@@ -54,6 +54,7 @@ classdef test_createAFilePackage < matlab.unittest.TestCase
             [containerFolder, ~, ~] = fileparts(which(fileName));
             removePath(projObj, containerFolder);
             removeFile(projObj, containerFolder);
+            delete(containerFolder);
         end
 
     end
