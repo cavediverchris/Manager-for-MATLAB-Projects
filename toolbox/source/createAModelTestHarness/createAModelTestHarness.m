@@ -45,7 +45,14 @@ function [testHarnessFilename] = createAModelTestHarness (modelUnderTest)
 isSlTestInstalled = license('test', 'Simulink_test');
 testHarnessFilename = "";
 %% Get paths and names
-[modelPath, modelName, ~] = fileparts(modelUnderTest);
+[modelPath, modelName, ext] = fileparts(modelUnderTest);
+
+if isempty(ext)
+    % CASE: the user did not provide an extension
+    % ACTION: Set to .slx
+    ext = ".slx";
+end
+
 harnessName = modelName + "_harness";
 
 % Recast modelName to be a character array for simulink operations later
@@ -100,7 +107,7 @@ else
     % Connect the Output of the model reference to the display
     add_line(gcs, [modelName, '/1'], 'Display/1');
     
-    testHarnessFilename = fullfile(modelPath, harnessName);
+    testHarnessFilename = fullfile(modelPath, harnessName + ext);
     save_system(gcs, testHarnessFilename);
     close_system(gcs);
     
