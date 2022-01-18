@@ -73,11 +73,17 @@ projObj = currentProject;
 addFile(projObj, targetDir);
 addPath(projObj, targetDir);
 
+myFile = findFile(projObj, targetDir);
+myFile.addLabel("Classification", "Design");
+
 %% Create a script
 % Initialise a new file
 newScriptFilename = fullfile(targetDir, newFileName + ext);
 createAFile(newScriptFilename);
 addFile(projObj, newScriptFilename);
+
+myFile = findFile(projObj, newScriptFilename);
+myFile.addLabel("Classification", "Design");
 
 %% Create requirements 
 % In this section we want to create a requirements file alongside the newly
@@ -85,6 +91,8 @@ addFile(projObj, newScriptFilename);
 reqtsFile = fullfile(targetDir, "reqts_" + newFileName);
 createReqtsModule(reqtsFile);
 %addFile(projObj, reqtsFile);
+% myFile = findFile(projObj, reqtsFile);
+% myFile.addLabel("Classification", "Artifact");
 
 %% Create Unit Test file
 % A unit test case file is established and added into the tests directory.
@@ -120,5 +128,8 @@ fprintf(fileId, '%s', newline);
 fclose(fileId);
 
 addFile(projObj, which(unitTestFilename));
+
+myFile = findFile(projObj, unitTestFilename);
+myFile.addLabel("Classification", "Test");
 
 end
