@@ -89,11 +89,15 @@ myFile.addLabel("Classification", "Design");
 % In this section we want to create a requirements file alongside the newly
 % created MATLAB script
 reqtsFile = fullfile(targetDir, "reqts_" + newFileName);
-createReqtsModule(reqtsFile);
-%addFile(projObj, reqtsFile);
-% myFile = findFile(projObj, reqtsFile);
-% myFile.addLabel("Classification", "Artifact");
+[result, ~] = createReqtsModule(reqtsFile);
 
+if result == 1
+    % CASE: A requirements module has been created
+    % ACTION: Add the file to the project
+    addFile(projObj, reqtsFile);
+    myFile = findFile(projObj, reqtsFile);
+    myFile.addLabel("Classification", "Artifact");
+end
 %% Create Unit Test file
 % A unit test case file is established and added into the tests directory.
 testsDir = fullfile(projObj.RootFolder, "tests");
