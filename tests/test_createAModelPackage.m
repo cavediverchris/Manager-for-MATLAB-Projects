@@ -36,7 +36,7 @@ classdef test_createAModelPackage < matlab.unittest.TestCase
                 % be internal
                 % ACTION: Check for the presence of internal test harnesses
                 % TODO
-                harnessList = sltest.harness.find(modelName);
+                harnessList = sltest.harness.find(char(modelName));
                 if isempty(harnessList)
                     % CASE: No harnesses are connected
                     % ACTION: This is a failure
