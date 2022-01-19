@@ -19,8 +19,9 @@ classdef test_buildToolbox < matlab.unittest.TestCase
             
 
             %% Test Execution
-            % buildToolbox;
-            % TODO: Need to investigate GitHub issues when automating this
+            buildToolbox;
+             % TODO: Investigate why GitHub runner is unable to clone a
+            % repo.
             %% Test Verification
             % We want to check that the output from convertSentenceCase
             % function is as expected
@@ -29,10 +30,7 @@ classdef test_buildToolbox < matlab.unittest.TestCase
             result = exist(which(tbxName), 'file');
             
             expSolution = 2;
-            testCase.verifyEqual(2,expSolution);
-            % TODO: Investigate why GitHub runner is unable to clone a
-            % repo.
-            %testCase.verifyEqual(result,expSolution);
+            testCase.verifyEqual(result,expSolution);
             
             %% Test Teardown
             delete(which(tbxName));
