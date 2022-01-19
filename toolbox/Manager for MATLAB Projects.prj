@@ -17,7 +17,7 @@ Also packaged are three MATLAB Project Templates for different roles:
 - MATLAB Template for Designing Systems
 - MATLAB Template for Data Science</param.description>
     <param.screenshot />
-    <param.version>0.3.2</param.version>
+    <param.version>0.3.3</param.version>
     <param.output>${PROJECT_ROOT}\Manager for MATLAB Projects.mltbx</param.output>
     <param.products.name />
     <param.products.id />
@@ -96,16 +96,15 @@ Also packaged are three MATLAB Project Templates for different roles:
       <file>${PROJECT_ROOT}\source\createAModel</file>
       <file>${PROJECT_ROOT}\source\createAModelPackage</file>
       <file>${PROJECT_ROOT}\source\createAModelTestHarness</file>
-      <file>${PROJECT_ROOT}\source\createNewFile</file>
       <file>${PROJECT_ROOT}\source\createReqtsModule</file>
       <file>${PROJECT_ROOT}\source\createTemplateFromProject</file>
       <file>${PROJECT_ROOT}\source\DesktopToolset.xml</file>
       <file>${PROJECT_ROOT}\source\initialiseFile</file>
       <file>${PROJECT_ROOT}\source\initialiseFileHeader</file>
       <file>${PROJECT_ROOT}\source\manager.mlapp</file>
-      <file>${PROJECT_ROOT}\source\MATLABtemplateforappdevelopment.sltx</file>
-      <file>${PROJECT_ROOT}\source\MATLABtemplatefordatascience.sltx</file>
-      <file>${PROJECT_ROOT}\source\MATLABtemplatefordesigningsystems.sltx</file>
+      <file>${PROJECT_ROOT}\source\MATLAB_template_for_app_development.sltx</file>
+      <file>${PROJECT_ROOT}\source\MATLAB_template_for_data_science.sltx</file>
+      <file>${PROJECT_ROOT}\source\MATLAB_template_for_designing_systems.sltx</file>
       <file>${PROJECT_ROOT}\source\README.md</file>
     </fileset.rootfiles>
     <fileset.depfun.included />
