@@ -32,6 +32,8 @@ classdef test_createAModelPackage < matlab.unittest.TestCase
             testFileName = fullfile(containingFolder, fileName + "_harness.slx");
             testExists = exist(which(testFileName), 'file');
             
+            reqtsFileName = "TBD" + ".slreqx";
+            reqtsExists = exist(which(reqtsFileName), 'file');
             
             expSolution = 4;
             testCase.verifyEqual(modelExists,expSolution);
