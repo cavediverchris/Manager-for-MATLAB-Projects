@@ -34,7 +34,7 @@ classdef test_createAModelPackage < matlab.unittest.TestCase
             testCase.verifyEqual(modelExists,expSolution);
             
             isSlTestInstalled = license('test', 'Simulink_test');
-            if isSlTestInstalled
+            if isSlTestInstalled == `
                 % CASE: Simulink Test is installed, the test harness will
                 % be internal
                 % ACTION: Check for the presence of internal test harnesses
@@ -50,7 +50,7 @@ classdef test_createAModelPackage < matlab.unittest.TestCase
                     % ACTION: Report a pass
                     testCase.verifyEqual(true, true);
                 end
-            elseif isSlTestInstalled == false
+            elseif isSlTestInstalled == 0
                 testFileName = fullfile(containingFolder, fileName + "_harness.slx");
                 testExists = exist(which(testFileName), 'file');
                 testCase.verifyEqual(testExists,4);
@@ -77,19 +77,31 @@ classdef test_createAModelPackage < matlab.unittest.TestCase
             labels = fcnFileObj.findLabel("Classification", "Design");
             testCase.verifyNotEmpty(labels);
             
-            testFileObj = findFile(projObj, which(testFileName));
-            labels = testFileObj.findLabel("Classification", "Test");
-            testCase.verifyNotEmpty(labels);
+            if isSlTestInstalled == 0
+                % CASE: SL Test is not installed, so an external test
+                % harness has been created
+                % ACTION: Check the label has been set for it
+                testFileObj = findFile(projObj, which(testFileName));
+                labels = testFileObj.findLabel("Classification", "Test");
+                testCase.verifyNotEmpty(labels);
+            end
             
             %% Test Teardown
             % Remove the files created from the project
             
             removeFile(projObj, which(fileName));
-            removeFile(projObj, which(testFileName));
+            
+            if isSlTestInstalled == 0
+                % CASE: SL Test is not installed, so an external harness
+                % has been made
+                % ACTION: remote the external test harness
+                removeFile(projObj, which(testFileName));
+            end
             
             [containerFolder, ~, ~] = fileparts(which(fileName));
             removePath(projObj, containerFolder);
             removeFile(projObj, containerFolder);
+            
             if isSlReqtsInstalled
                 % CASE: SL Reqts is installed, requirements module to be
                 % removed
