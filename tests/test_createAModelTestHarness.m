@@ -43,7 +43,7 @@ classdef test_createAModelTestHarness < matlab.unittest.TestCase
             elseif isSlTestInstalled == true
                 % CASE: SL Test is installed
                 % ACTION: Check for internal test harness
-                harnessList = sltest.harness.find(testHarnessFilename);
+                harnessList = sltest.harness.find(char(testHarnessFilename));
                 
                 if isempty(harnessList)
                     % CASE: Harness is empty
