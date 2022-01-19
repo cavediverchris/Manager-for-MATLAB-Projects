@@ -11,7 +11,7 @@
 %% MAIN
 classdef test_createAModel < matlab.unittest.TestCase
     methods(Test)
-        function confirmScriptIsMade(testCase)
+        function confirmAModelIsMade(testCase)
             %% Description
             % The purpose of this test is to ensure that the createAFile
             % script will correctly set up a new MATLAB script
