@@ -11,9 +11,9 @@
 %% MAIN
 classdef test_createAReqtsModule < matlab.unittest.TestCase
     methods(Test)
-        function tempTestForWhenThereIsNoLicence(testCase)
+        function TestForWhenThereIsNoLicence(testCase)
             %% Description
-            % This test is temporary and is designed to confirm that an
+            % This test is designed to confirm that an
             % error is returned in the event that the target computer is
             % unable to create a requirements module because Simulink
             % Requirements is not available.
@@ -21,39 +21,54 @@ classdef test_createAReqtsModule < matlab.unittest.TestCase
             newFileName = "aSimpleRequirementsModule";
             %projObj = currentProject;
             %% Test Execution
-            
+            [result, ~] = createReqtsModule(newFileName);
             %% Test Verification
             % We want to check that an error is returned
-
-            expSolution = "createReqtsModule:noRequirementsLicence";
-            testCase.verifyError(@() createReqtsModule(newFileName),expSolution);
+            if result == 0
+                % CASE: The target machine does not have a licence
+                % ACTION: Verify the error
+                expSolution = "createReqtsModule:noRequirementsLicence";
+                testCase.verifyWarning(@() createReqtsModule(newFileName),expSolution);
+            elseif result == 1
+                % CASE: The target machine does have a licence
+                % ACTION: Do nothing because this test is not applicable
+                testCase.verifyEqual(true, true);
+            end
             
             %% Test Teardown
+        end
 
+        function confirmReqtsModuleCreated(testCase)
+            %% Description
+            % This test is designed to confirm that a requirements module
+            % is created when a licence is available
+            %% Test Setup
+            newFileName = "aSimpleRequirementsModule";
+            %projObj = currentProject;
+            %% Test Execution
+            [result, ~] = createReqtsModule(newFileName);
+            %% Test Verification
+            % We want to check that an error is returned
+            if result == 0
+                % CASE: The target machine does not have a licence
+                % ACTION: Do nothing because this test is not applicable
+            elseif result == 1
+                % CASE: The target machine does have a licence
+                % ACTION: Check that a requirements file is made
+                expSolution = 2;
+                
+                reqtsExist = exist(which(newFileName), 'file');
+                testCase.verifyEqual(reqtsExist,expSolution);
+            end
+            
+            %% Test Teardown
+            if result == 1
+                % CASE: The target machine has a requirements licence
+                % ACTION: delete the requirements module
+                delete(which(newFileName));
+            end
 
         end
-        
-%         function confirmAScriptAndTestIsMade(testCase)
-%             %% Description
-%             % The purpose of this test is to ensure that the
-%             % createReqtsModule script creates a requirements module
-%             %% Test Setup
-%             newFileName = "aSimpleRequirementsModule";
-%             projObj = currentProject;
-%             %% Test Execution
-%             createReqtsModule(newFileName);
-%             %% Test Verification
-%             % We want to check that:
-%             % - a new requirements file has been created
-%             
-%             
-%             expSolution = 2;
-%             testCase.verifyEqual(expSolution,expSolution);
-%             
-%             %% Test Teardown
-%             % Remove the files created from the project
-% 
-%         end
 
     end
 end

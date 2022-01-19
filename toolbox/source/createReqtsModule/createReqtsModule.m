@@ -35,15 +35,17 @@
 % improvements ...
 
 
-function [] = createReqtsModule(reqtsFile)
+function [result, comment] = createReqtsModule(reqtsFile)
 %% Check for Simulink Requirements Licence
-feature = "requirements";
-status = license('test',feature);
+status = license('test','slvnv');
 
 if status == 0
    % CASE: A Simulink Requirements licence is not present
    % ACTION: Return an error
-   error("createReqtsModule:noRequirementsLicence", "A Simulink Requirements licence is required.");
+   warning("createReqtsModule:noRequirementsLicence", "A Simulink Requirements licence is required. No requirements module will be created.");
+   result = 0;
+   comment = "No SL Requirements Licence";
+   return;
 end
 
 %% Create Requirements File
@@ -53,31 +55,101 @@ myReqSet.Description = "This requirements file contains the requirements for ...
 
 % Add headings as per MIL-HDBK-520A to the reqset
 
-add(myReqSet, 'Summary', 'Required states and modes');
-add(myReqSet, 'Summary', 'System capability requirements');
-add(myReqSet, 'Summary', 'External interface requirements');
-add(myReqSet, 'Summary', 'Internal interface requirements');
-add(myReqSet, 'Summary', 'Internal data requirements');
-add(myReqSet, 'Summary', 'Adaptation requirements');
-add(myReqSet, 'Summary', 'Environmental, Safety and Operational Health requirements');
-add(myReqSet, 'Summary', 'Security and privacy requirements');
+reqObj = add(myReqSet, 'Summary', 'Required states and modes');
+reqObj.Type = 'Container';
+reqObj.Description = 'TBD';
+
+reqObj = add(myReqSet, 'Summary', 'System capability requirements');
+reqObj.Type = 'Container';
+reqObj.Description = 'TBD';
+
+reqObj = add(myReqSet, 'Summary', 'External interface requirements');
+reqObj.Type = 'Container';
+reqObj.Description = 'TBD';
+
+reqObj = add(myReqSet, 'Summary', 'Internal interface requirements');
+reqObj.Type = 'Container';
+reqObj.Description = 'TBD';
+
+reqObj = add(myReqSet, 'Summary', 'Internal data requirements');
+reqObj.Type = 'Container';
+reqObj.Description = 'TBD';
+
+reqObj = add(myReqSet, 'Summary', 'Adaptation requirements');
+reqObj.Type = 'Container';
+reqObj.Description = 'TBD';
+
+reqObj = add(myReqSet, 'Summary', 'Environmental, Safety and Operational Health requirements');
+reqObj.Type = 'Container';
+reqObj.Description = 'TBD';
+
+reqObj = add(myReqSet, 'Summary', 'Security and privacy requirements');
+reqObj.Type = 'Container';
+reqObj.Description = 'TBD';
+
 compReqt = add(myReqSet, 'Summary', 'Computer resource requirements');
-add(compReqt, 'Summary', 'Computer hardware requirements');
-add(compReqt, 'Summary', 'Computer hardware resource utilisation requirements');
-add(compReqt, 'Summary', 'Computer software requirements');
-add(compReqt, 'Summary', 'Computer communication requirements');
-add(myReqSet, 'Summary', 'System quality factors');
-add(myReqSet, 'Summary', 'Design and construction constraints');
-add(myReqSet, 'Summary', 'Personnel related requirements');
-add(myReqSet, 'Summary', 'Training related requirements');
-add(myReqSet, 'Summary', 'Logistics related requirements');
-add(myReqSet, 'Summary', 'Other requirements');
-add(myReqSet, 'Summary', 'Packaging requirements');
-add(myReqSet, 'Summary', 'Statutory, regulatory and certification requirements');
-add(myReqSet, 'Summary', 'Demilitarisation and disposal');
+compReqt.Type = 'Container';
+compReqt.Description = 'TBD';
+
+reqObj = add(compReqt, 'Summary', 'Computer hardware requirements');
+reqObj.Type = 'Container';
+reqObj.Description = 'TBD';
+
+reqObj = add(compReqt, 'Summary', 'Computer hardware resource utilisation requirements');
+reqObj.Type = 'Container';
+reqObj.Description = 'TBD';
+
+reqObj = add(compReqt, 'Summary', 'Computer software requirements');
+reqObj.Type = 'Container';
+reqObj.Description = 'TBD';
+
+reqObj = add(compReqt, 'Summary', 'Computer communication requirements');
+reqObj.Type = 'Container';
+reqObj.Description = 'TBD';
+
+reqObj = add(myReqSet, 'Summary', 'System quality factors', 'Type');
+reqObj.Type = 'Container';
+reqObj.Description = 'TBD';
+
+reqObj = add(myReqSet, 'Summary', 'Design and construction constraints');
+reqObj.Type = 'Container';
+reqObj.Description = 'TBD';
+
+reqObj = add(myReqSet, 'Summary', 'Personnel related requirements');
+reqObj.Type = 'Container';
+reqObj.Description = 'TBD';
+
+reqObj = add(myReqSet, 'Summary', 'Training related requirements');
+reqObj.Type = 'Container';
+reqObj.Description = 'TBD';
+
+reqObj = add(myReqSet, 'Summary', 'Logistics related requirements');
+reqObj.Type = 'Container';
+reqObj.Description = 'TBD';
+
+reqObj = add(myReqSet, 'Summary', 'Other requirements');
+reqObj.Type = 'Container';
+reqObj.Description = 'TBD';
+
+reqObj = add(myReqSet, 'Summary', 'Packaging requirements');
+reqObj.Type = 'Container';
+reqObj.Description = 'TBD';
+
+reqObj = add(myReqSet, 'Summary', 'Statutory, regulatory and certification requirements', 'Type', 'Container', 'Description', 'TBD');
+reqObj.Type = 'Container';
+reqObj.Description = 'TBD';
+
+reqObj = add(myReqSet, 'Summary', 'Demilitarisation and disposal', 'Type', 'Container', 'Description', 'TBD');
+reqObj.Type = 'Container';
+reqObj.Description = 'TBD';
+
 
 % Close the requirements file
 myReqSet.save;
 myReqSet.close;
+
+% Set outputs
+result = 1;
+comment = "success";
 end
 
