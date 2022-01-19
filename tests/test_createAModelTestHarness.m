@@ -31,7 +31,7 @@ classdef test_createAModelTestHarness < matlab.unittest.TestCase
             
             
             isSlTestInstalled = license('test', 'Simulink_test');
-            disp(['Is SL Test installed?: ', isSlTestInstalled]);
+            disp(['Is SL Test installed?: ', num2str(isSlTestInstalled)]);
             
             if isSlTestInstalled == 0
                 % CASE: SL Test isn't installed
