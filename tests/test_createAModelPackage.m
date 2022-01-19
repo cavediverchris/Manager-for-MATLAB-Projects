@@ -34,7 +34,7 @@ classdef test_createAModelPackage < matlab.unittest.TestCase
             testCase.verifyEqual(modelExists,expSolution);
             
             isSlTestInstalled = license('test', 'Simulink_test');
-            if isSlTestInstalled == `
+            if isSlTestInstalled == 1
                 % CASE: Simulink Test is installed, the test harness will
                 % be internal
                 % ACTION: Check for the presence of internal test harnesses
