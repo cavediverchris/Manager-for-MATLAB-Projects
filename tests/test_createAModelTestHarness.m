@@ -31,20 +31,19 @@ classdef test_createAModelTestHarness < matlab.unittest.TestCase
             
             
             isSlTestInstalled = license('test', 'Simulink_test');
-            disp(['Is SL Test installed?: ', num2str(isSlTestInstalled)]);
             
             if isSlTestInstalled == 0
                 % CASE: SL Test isn't installed
                 % ACTION: Check for an external test harness
                 testExists = exist(which(testHarnessFilename), 'file');
-                disp(['testExists output:', num2str(testExists)]);
                 expSolution = 4;
                 testCase.verifyEqual(testExists,expSolution);
             elseif isSlTestInstalled == 1
                 % CASE: SL Test is installed
                 % ACTION: Check for internal test harness
-                harnessList = sltest.harness.find(char(testHarnessFilename));
-                disp(['Harness List:', harnessList]);
+                hTestHarness = load_system(char(testHarnessFilename));
+                harnessList = sltest.harness.find(hTestHarness);
+                close_system(hTestHarness);
                 if isempty(harnessList)
                     % CASE: Harness is empty
                     % ACTION: Report a failure because this is wrong
@@ -60,7 +59,6 @@ classdef test_createAModelTestHarness < matlab.unittest.TestCase
             %% Test Teardown
             % Remove the files created from the project
             delete(testHarnessFilename);
-            disp(['New model name:', newFileName]);
             delete(newFileName);
         end
 

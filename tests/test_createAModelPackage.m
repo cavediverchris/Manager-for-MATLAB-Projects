@@ -38,7 +38,9 @@ classdef test_createAModelPackage < matlab.unittest.TestCase
                 % CASE: Simulink Test is installed, the test harness will
                 % be internal
                 % ACTION: Check for the presence of internal test harnesses
-                harnessList = sltest.harness.find(char(modelName));
+                hTestHarness = load_system(char(modelName));
+                harnessList = sltest.harness.find(hTestHarness);
+                close_system(hTestHarness);
                 if isempty(harnessList)
                     % CASE: No harnesses are connected
                     % ACTION: This is a failure
