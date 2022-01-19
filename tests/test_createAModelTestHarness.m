@@ -22,7 +22,7 @@ classdef test_createAModelTestHarness < matlab.unittest.TestCase
             createAModel(newFileName);
             %% Test Execution
             [testHarnessFilename] = createAModelTestHarness (newFileName);
-            projObj = currentProject;
+            
             %% Test Verification
             % We want to check that:
             % - if SL Test is not available, an external test harness would
