@@ -74,10 +74,12 @@ if isSlTestInstalled
     
     save_system(modelUnderTest);
     close_system(modelUnderTest);
+    disp(['Model Under Test:', modelUnderTest]);
     
     % Setting the test harness filename to be the same as the model under
     % test to indicate it is internal
     testHarnessFilename = modelUnderTest;
+    disp(['Harness Name:', testHarnessFilename]);
 else
     % CASE: Simulink Test is not available
     % ACTION: Return a warning
@@ -116,4 +118,5 @@ else
     % TODO: set the configuration reference
 end
 
+disp(['Output Name:', testHarnessFilename]);
 end % function
