@@ -37,16 +37,26 @@ classdef test_createAModelTestHarness < matlab.unittest.TestCase
                 % CASE: SL Test isn't installed
                 % ACTION: Check for an external test harness
                 testExists = exist(which(testHarnessFilename), 'file');
+                
+                expSolution = 4;
+                testCase.verifyEqual(testExists,expSolution);
             elseif isSlTestInstalled == true
                 % CASE: SL Test is installed
                 % ACTION: Check for internal test harness
-                % TODO
+                harnessList = sltest.harness.find(testHarnessFilename);
                 
-                
+                if isempty(harnessList)
+                    % CASE: Harness is empty
+                    % ACTION: Report a failure because this is wrong
+                    testCase.verifyEqual(true,false);
+                else
+                    % CASE: Model has test harnesses
+                    % ACTION: Report a pass
+                    testCase.verifyEqual(true,true);
+                end
             end
          
-            expSolution = 4;
-            testCase.verifyEqual(testExists,expSolution);
+            
             %% Test Teardown
             % Remove the files created from the project
             delete(testHarnessFilename);
