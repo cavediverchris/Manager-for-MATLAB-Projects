@@ -21,8 +21,14 @@
 % section of <a href="matlab:web('https://github.com/cavediverchris/Manager-for-MATLAB-Projects/issues')">Github.</a>.
 %% MAIN
 function [] = createAModel(modelFilename)
-[path, modelName, ~] = fileparts(modelFilename);
+[path, modelName, ext] = fileparts(modelFilename);
 
+
+if strcmp(ext, "")
+    % CASE: An extension wasn't provided
+    % ACTION: Set a default slx
+    ext = ".slx";
+end
 %% Create basic model
 new_system(modelName);
 
@@ -67,7 +73,7 @@ set_param([gcs, '/ModelDocBlock'], 'position', [350 50 400 100]);
 
 %% Close Down
 % save current model
-save_system(gcs, fullfile(path, modelName));
+save_system(gcs, fullfile(path, modelName + ext));
 close_system(gcs);
 
 end
