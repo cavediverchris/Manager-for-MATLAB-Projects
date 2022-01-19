@@ -28,15 +28,16 @@ classdef test_createAModelPackage < matlab.unittest.TestCase
             % - a unit test case has been created
             containingFolder = fullfile(pwd, fileName);
             modelName = fullfile(containingFolder, fileName + ".slx");
-            modelExists = exist(which(modelName), 'file');
+            modelExists = exist(modelName, 'file');
+            
+            expSolution = 4;
+            testCase.verifyEqual(modelExists,expSolution);
             
             isSlTestInstalled = license('test', 'Simulink_test');
             if isSlTestInstalled
                 % CASE: Simulink Test is installed, the test harness will
                 % be internal
                 % ACTION: Check for the presence of internal test harnesses
-                % TODO
-                disp(modelName)
                 harnessList = sltest.harness.find(char(modelName));
                 if isempty(harnessList)
                     % CASE: No harnesses are connected
@@ -65,8 +66,7 @@ classdef test_createAModelPackage < matlab.unittest.TestCase
                 testCase.verifyEqual(reqtsExists, 2);
             end
             
-            expSolution = 4;
-            testCase.verifyEqual(modelExists,expSolution);
+            
             
             
             % Check that the files have the correct label
