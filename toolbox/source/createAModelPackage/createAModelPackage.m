@@ -94,14 +94,30 @@ myFile.addLabel("Classification", "Design");
 % In this section we want to create a requirements file alongside the newly
 % created MATLAB script
 reqtsFile = fullfile(targetDir, "reqts_" + newModelName);
-createReqtsModule(reqtsFile);
-%addFile(projObj, reqtsFile);
-%myFile = findFile(projObj, newModelFilename);
-%myFile.addLabel("Classification", "Artifact");
+[result, ~] = createReqtsModule(reqtsFile);
 
+if result == 0
+    % CASE: A SL Reqts licence is not available
+    % ACTION: Do nothing
+elseif result == 1
+    % CASE: A requirements file has been created
+    % ACTION: Add it to project
+    addFile(projObj, reqtsFile);
+    myFile = findFile(projObj, newModelFilename);
+    myFile.addLabel("Classification", "Artifact");
+end
 %% Create Test Harness
 [testHarnessFilename] = createAModelTestHarness(newModelFilename);
-addFile(projObj, which(testHarnessFilename));
 
-myFile = findFile(projObj, which(testHarnessFilename));
-myFile.addLabel("Classification", "Test");
+if strcmp(testHarnessFilename, newModelFilename)
+    % CASE: Test harness filename is the same as new model name. This will
+    % be the case if internal test harnesses have been created
+    % ACTION: Do nothing
+else
+    % CASE: An external test harness has been provided
+    % ACTION: Add it to the project
+    addFile(projObj, which(testHarnessFilename));
+    
+    myFile = findFile(projObj, which(testHarnessFilename));
+    myFile.addLabel("Classification", "Test");
+end
