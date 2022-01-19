@@ -79,6 +79,9 @@ if isSlTestInstalled
         'VerificationMode', 'Normal', ...
         'RebuildOnOpen', true, ...
         'SaveExternally', false);
+    
+    save_system(modelUnderTest);
+    close_system(modelUnderTest);
 else
     % CASE: Simulink Test is not available
     % ACTION: Return a warning
