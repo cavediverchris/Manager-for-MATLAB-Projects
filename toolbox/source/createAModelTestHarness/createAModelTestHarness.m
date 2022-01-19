@@ -59,7 +59,7 @@ harnessName = modelName + "_harness";
 modelName = char(modelName);
 
 %% Build Harness
-if isSlTestInstalled
+if isSlTestInstalled == 1
     % CASE: Simulink Test is available
     % ACTION: Create a test harness using SL Test
     
@@ -118,5 +118,5 @@ else
     % TODO: set the configuration reference
 end
 
-disp(['Output of Create Test Harness:', testHarnessFilename]);
+disp(['Output of Create Test Harness:', char(testHarnessFilename)]);
 end % function
