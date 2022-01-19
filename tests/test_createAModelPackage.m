@@ -16,7 +16,7 @@ classdef test_createAModelPackage < matlab.unittest.TestCase
             % The purpose of this test is to ensure that the createAFile
             % script will correctly set up a new MATLAB script
             %% Test Setup
-            fileName = "aBasicTest";
+            fileName = "aBasicModel";
             newFileName = fullfile(pwd, fileName);
             bdclose all;
             %% Test Execution
@@ -32,12 +32,13 @@ classdef test_createAModelPackage < matlab.unittest.TestCase
             testFileName = fullfile(containingFolder, fileName + "_harness.slx");
             testExists = exist(which(testFileName), 'file');
             
-            reqtsFileName = "TBD" + ".slreqx";
+            reqtsFileName = "reqts_" + fileName + ".slreqx";
             reqtsExists = exist(which(reqtsFileName), 'file');
             
             expSolution = 4;
             testCase.verifyEqual(modelExists,expSolution);
             testCase.verifyEqual(testExists,expSolution);
+            testCase.verifyEqual(reqtsExists, 2);
             
             % Check that the files have the correct label
             projObj = currentProject;
@@ -58,6 +59,8 @@ classdef test_createAModelPackage < matlab.unittest.TestCase
             [containerFolder, ~, ~] = fileparts(which(fileName));
             removePath(projObj, containerFolder);
             removeFile(projObj, containerFolder);
+            
+            rmdir(containerFolder, 's');
         end
 
     end
