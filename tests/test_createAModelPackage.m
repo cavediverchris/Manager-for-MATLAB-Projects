@@ -19,6 +19,7 @@ classdef test_createAModelPackage < matlab.unittest.TestCase
             fileName = "aBasicModel";
             newFileName = fullfile(pwd, fileName);
             bdclose all;
+            clc;
             %% Test Execution
             createAModelPackage(newFileName);
             %% Test Verification
@@ -29,16 +30,43 @@ classdef test_createAModelPackage < matlab.unittest.TestCase
             modelName = fullfile(containingFolder, fileName + ".slx");
             modelExists = exist(which(modelName), 'file');
             
-            testFileName = fullfile(containingFolder, fileName + "_harness.slx");
-            testExists = exist(which(testFileName), 'file');
+            isSlTestInstalled = license('test', 'Simulink_test');
+            if isSlTestInstalled
+                % CASE: Simulink Test is installed, the test harness will
+                % be internal
+                % ACTION: Check for the presence of internal test harnesses
+                % TODO
+                harnessList = sltest.harness.find(modelName);
+                if isempty(harnessList)
+                    % CASE: No harnesses are connected
+                    % ACTION: This is a failure
+                    testCase.verifyEqual(1,2);
+                else
+                    % CASE: Test harness is present
+                    % ACTION: Report a pass
+                    testCase.verifyEqual(true, true);
+                end
+            elseif isSlTestInstalled == false
+                testFileName = fullfile(containingFolder, fileName + "_harness.slx");
+                testExists = exist(which(testFileName), 'file');
+                testCase.verifyEqual(testExists,4);
+            end
             
-            reqtsFileName = "reqts_" + fileName + ".slreqx";
-            reqtsExists = exist(which(reqtsFileName), 'file');
+            isSlReqtsInstalled = license('test','slvnv');
+            
+            if isSlReqtsInstalled
+                % CASE: SL Reqts is installed, so a reqts file would have
+                % been made
+                % ACTION: check for it
+            
+                reqtsFileName = "reqts_" + fileName + ".slreqx";
+                reqtsExists = exist(which(reqtsFileName), 'file');
+                testCase.verifyEqual(reqtsExists, 2);
+            end
             
             expSolution = 4;
             testCase.verifyEqual(modelExists,expSolution);
-            testCase.verifyEqual(testExists,expSolution);
-            testCase.verifyEqual(reqtsExists, 2);
+            
             
             % Check that the files have the correct label
             projObj = currentProject;
@@ -59,7 +87,14 @@ classdef test_createAModelPackage < matlab.unittest.TestCase
             [containerFolder, ~, ~] = fileparts(which(fileName));
             removePath(projObj, containerFolder);
             removeFile(projObj, containerFolder);
-            
+            if isSlReqtsInstalled
+                % CASE: SL Reqts is installed, requirements module to be
+                % removed
+                % ACTION: Remove it from project and delete
+                %reqtsFile = findFile(projObj, reqtsFileName);
+                removeFile(projObj, which(reqtsFileName));
+                delete(which(reqtsFileName));
+            end
             rmdir(containerFolder, 's');
         end
 
