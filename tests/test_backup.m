@@ -13,11 +13,12 @@ classdef test_backup < matlab.unittest.TestCase
     methods(Test)
         % What if the desintation is invalid?
         % What about if the destination already has a backup file?
-        function confirmCamelCase(testCase)
+        function confirmBackUp(testCase)
             %% Description
             % The purpose of this test is to ensure that the backup
             % function creates a backup when the destination is valid
             %% Test Setup
+            
             projObj = currentProject;
             
             
@@ -38,6 +39,10 @@ classdef test_backup < matlab.unittest.TestCase
             parts = strsplit(projObj.RootFolder, sep);
             destination = strjoin(parts(1:end-1), sep);
             destination = fullfile(destination, "backupsFolder");
+            
+            % A backup file would have been made when the project loads, so
+            % let us delete it first
+            rmdir(destination, 's')
             mkdir(destination);
             %% Test Execution
             backup(destination);

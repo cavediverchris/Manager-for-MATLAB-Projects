@@ -16,6 +16,8 @@
 % projects that we will want to build templates of
 !git submodule update --init --recursive
  
+reload(currentProject);
+
 % build the latest versions of the template files
 buildProjectTemplates;
 

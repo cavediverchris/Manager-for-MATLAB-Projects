@@ -7,6 +7,7 @@
     <param.summary>Manager for MATLAB Projects automates routine tasks.</param.summary>
     <param.description>The Manager for MATLAB Projects ships as a MATLAB Toolbox which will install an app that provides a graphical front-end to a suite of tools to help with task automation. These include:
 
+- A backup utility to help provide resilence if your repository is at risk of corruption. Simply give it the path to where you want to keep your backups and you can call it as part of your project set up script.
 - A simple one-click utility that will initialise a script along with a test harness and a requirements specification all with a name based upon a standardised naming convention
 - A simple utility that will allow you to create a Template File of the currently running project.
 
@@ -16,7 +17,7 @@ Also packaged are three MATLAB Project Templates for different roles:
 - MATLAB Template for Designing Systems
 - MATLAB Template for Data Science</param.description>
     <param.screenshot />
-    <param.version>0.3.2</param.version>
+    <param.version>0.3.3</param.version>
     <param.output>${PROJECT_ROOT}\Manager for MATLAB Projects.mltbx</param.output>
     <param.products.name />
     <param.products.id />
@@ -91,7 +92,10 @@ Also packaged are three MATLAB Project Templates for different roles:
       <file>${PROJECT_ROOT}\source\backup</file>
       <file>${PROJECT_ROOT}\source\convertSentenceCase</file>
       <file>${PROJECT_ROOT}\source\createAFile</file>
-      <file>${PROJECT_ROOT}\source\createNewFile</file>
+      <file>${PROJECT_ROOT}\source\createAFilePackage</file>
+      <file>${PROJECT_ROOT}\source\createAModel</file>
+      <file>${PROJECT_ROOT}\source\createAModelPackage</file>
+      <file>${PROJECT_ROOT}\source\createAModelTestHarness</file>
       <file>${PROJECT_ROOT}\source\createReqtsModule</file>
       <file>${PROJECT_ROOT}\source\createTemplateFromProject</file>
       <file>${PROJECT_ROOT}\source\DesktopToolset.xml</file>

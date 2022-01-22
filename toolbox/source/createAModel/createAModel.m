@@ -20,11 +20,17 @@
 % You can also report bugs or suggestions for improvements in the "issues"
 % section of <a href="matlab:web('https://github.com/cavediverchris/Manager-for-MATLAB-Projects/issues')">Github.</a>.
 %% MAIN
-function [] = createAModel(modelName)
+function [] = createAModel(modelFilename)
+[path, modelName, ext] = fileparts(modelFilename);
 
 
+if strcmp(ext, "")
+    % CASE: An extension wasn't provided
+    % ACTION: Set a default slx
+    ext = ".slx";
+end
 %% Create basic model
-load_system(new_system(modelName));
+new_system(modelName);
 
 % Add an inport
 add_block('simulink/Sources/In1', [gcs, '/Inport']);
@@ -37,9 +43,6 @@ set_param([gcs, '/UnityGain'], 'position', [200 100 230 130]);
 % Add an outport
 add_block('simulink/Sinks/Out1', [gcs, '/Outport']);
 set_param([gcs, '/Outport'], 'position', [300 100 330 114]);
-
-% save current model
-save_system(gcs)
 
 % Connect the inport to the gain block
 add_line(gcs, 'Inport/1', 'UnityGain/1');
@@ -70,6 +73,7 @@ set_param([gcs, '/ModelDocBlock'], 'position', [350 50 400 100]);
 
 %% Close Down
 % save current model
-save_system(gcs)
-close_system(modelName);
+save_system(gcs, fullfile(path, modelName + ext));
+close_system(gcs);
+
 end
