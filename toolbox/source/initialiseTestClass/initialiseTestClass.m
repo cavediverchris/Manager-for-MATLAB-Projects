@@ -44,32 +44,44 @@ function [] = initialiseTestClass (fileId)
 fprintf(fileId, 'classdef %s < matlab.unittest.TestCase\n', 'TBD');
 
 % Write the methods block header
-fprintf(fileId, '   methods(Test)\n');
+fprintf(fileId, '%s\n', '   methods(Test)');
 
-% TODO - WRITE THE REST OF THE TEST DEF INITIALISATION
+% Write the first test case function declaration
+fprintf(fileId, '%s\n',  '       function templateTest(testCase)');
+
+% Write the test description
+fprintf(fileId, '%s\n',  '       	%% Description');
+fprintf(fileId, '%s\n',  '       	% The purpose of this test is to ...');
+
+% Write the test setup
+fprintf(fileId, '%s\n',  '       	%% Test Setup');
+fprintf(fileId, '%s\n',  '       	% In this section, we conduct any set up that we need for the test to work');
+fprintf(fileId, '%s\n',  '       	m = 2;');
+fprintf(fileId, '%s\n',  '       	x = 1;');
+fprintf(fileId, '%s\n',  '       	c = 5;');
+
+% Write the test execution
+fprintf(fileId, '%s\n',  '       	%% Text Execution');
+fprintf(fileId, '%s\n',  '       	% In this section we run the test.');
+fprintf(fileId, '%s\n',  '       	y = m*x + c;');
+
+% Write the test verification
+fprintf(fileId, '%s\n',  '       	%% Text Verification');
+fprintf(fileId, '%s\n',  '       	% In this section we write the code to confirm that the test was ran succesfully.');
+fprintf(fileId, '%s\n',  '       	testCase.verifyEqual(y, 7);');
+
+% Write the test teardown
+fprintf(fileId, '%s\n',  '       	%% Text Teardown');
+fprintf(fileId, '%s\n',  '       	% In this section we run any code as par of a teardown after completing the test.');
+
+% write the closer to the first test case
+fprintf(fileId, '%s\n',  '       end % templateTest(testCase)');
 
 % Write the closer to the methods block
-fprintf(fileId, '   end % methods');
+fprintf(fileId, '%s\n',  '   end % methods');
 
 % Write the closer to the class definition
-fprintf(fileId, 'end % classdef');
+fprintf(fileId, '%s\n',  'end % classdef');
 
-fprintf(fileId, '%s', newline);
-
-% write a template test
-fprintf(fileId, '%s', '%% Template Test 1: Insert Test Name');
-fprintf(fileId, '%s', newline);
-fprintf(fileId, '%s', newline);
-
-fprintf(fileId, '%s', 'inputData = 1;');
-fprintf(fileId, '%s', newline);
-
-text2write = sprintf('functionOuput = functionName(inputData);');
-fprintf(fileId, '%s', text2write);
-fprintf(fileId, '%s', newline);
-
-text2write = sprintf('assert(functionOutput == criteria, ''Error message if false'');');
-fprintf(fileId, '%s', text2write);
-fprintf(fileId, '%s', newline);
 
 end % function
