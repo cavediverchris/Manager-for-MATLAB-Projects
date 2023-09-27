@@ -6,7 +6,7 @@
 %
 % This utility currently supports the following case conversions:
 %
-% - Camel Case
+% - Camel Case (the first word is all lower case, all subsequent words have the first letter capitalised)
 %
 %% INPUTS
 % This function accepts the following inputs:
@@ -70,4 +70,3 @@ switch sentenceCase
         
 end % switch sentenceCase
 end % function
-
